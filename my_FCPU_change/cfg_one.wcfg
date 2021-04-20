@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/SUGONAYEV_Infa/V/CPU_FPGA/my_FCPU/CPU_Bench_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="CPU_Bench" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="15" />
+   <wvobject fp_name="/CPU_Bench/iDATA_OUT" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">iDATA_OUT</obj_property>
+      <obj_property name="ObjectShortName">iDATA_OUT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/iclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">iclk</obj_property>
+      <obj_property name="ObjectShortName">iclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/SRCA" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">SRCA[7:0]</obj_property>
+      <obj_property name="ObjectShortName">SRCA[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/SRCB" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">SRCB[7:0]</obj_property>
+      <obj_property name="ObjectShortName">SRCB[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/MEMOUT_BUS" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">MEMOUT_BUS[7:0]</obj_property>
+      <obj_property name="ObjectShortName">MEMOUT_BUS[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/target" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">target[2:0]</obj_property>
+      <obj_property name="ObjectShortName">target[2:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/DCWR" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">DCWR[7:0]</obj_property>
+      <obj_property name="ObjectShortName">DCWR[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/TRG" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">TRG[7:0]</obj_property>
+      <obj_property name="ObjectShortName">TRG[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/R0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">R0[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/R1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">R1[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/R2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R2[7:0]</obj_property>
+      <obj_property name="ObjectShortName">R2[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/R3" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R3[7:0]</obj_property>
+      <obj_property name="ObjectShortName">R3[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/R4" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R4[7:0]</obj_property>
+      <obj_property name="ObjectShortName">R4[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/R5" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R5[7:0]</obj_property>
+      <obj_property name="ObjectShortName">R5[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/PC" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PC[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>

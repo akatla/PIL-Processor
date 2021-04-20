@@ -1,0 +1,6 @@
+verilog isim_temp "UnBounceBB.v"
+verilog isim_temp "deviefive.v"
+verilog isim_temp "BRAMBlock.v"
+verilog isim_temp "my_FCPU.v"
+verilog isim_temp "CPU_Bench.v"
+verilog isim_temp "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"

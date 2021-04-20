@@ -1,0 +1,4 @@
+vhdtdtfi -lib work C:/SUGONAYEV_Infa/V/CPU_FPGA/my_FCPU/BRAM8Date.v -lang verilog -prj my_FCPU -o BRAM8Date.spl -module BRAM8Date -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 BRAM8Date.spl C:/SUGONAYEV_Infa/V/CPU_FPGA/my_FCPU/BRAM8Date.sym 
+vhdtdtfi -lang verilog -prj my_FCPU -o C:/SUGONAYEV_Infa/V/CPU_FPGA/my_FCPU/BRAM8Date.tfi -lib work C:/SUGONAYEV_Infa/V/CPU_FPGA/my_FCPU//BRAM8Date.v -module BRAM8Date -template C:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 
+vhdtdtfi -lang verilog -prj my_FCPU -o C:/SUGONAYEV_Infa/V/CPU_FPGA/my_FCPU/BRAM8Date.tfi -lib work C:/SUGONAYEV_Infa/V/CPU_FPGA/my_FCPU//BRAM8Date.v -module BRAM8Date -template C:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 

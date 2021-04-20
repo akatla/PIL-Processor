@@ -1,0 +1,4 @@
+verilog work "UnBounceBB.v"
+verilog work "deviefive.v"
+verilog work "BRAMBlock.v"
+verilog work "my_FCPU.v"

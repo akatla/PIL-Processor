@@ -1,0 +1,6 @@
+verilog work "UnBounceBB.v"
+verilog work "deviefive.v"
+verilog work "BRAMBlock.v"
+verilog work "my_FCPU.v"
+verilog work "CPU_Bench.v"
+verilog work "D:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"

@@ -1,0 +1,1523 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
+ 
+--> Reading design: my_FCPU.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "my_FCPU.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "my_FCPU"
+Output Format                      : NGC
+Target Device                      : xc6slx9-3-tqg144
+
+---- Source Options
+Top Module Name                    : my_FCPU
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\UnBounceBB.v" into library work
+Parsing module <UnBounceBB>.
+Analyzing Verilog file "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\deviefive.v" into library work
+Parsing module <deviefive>.
+Analyzing Verilog file "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\BRAMBlock.v" into library work
+Parsing module <RAM8>.
+Analyzing Verilog file "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" into library work
+Parsing module <my_FCPU>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <my_FCPU>.
+
+Elaborating module <RAM8>.
+
+Elaborating module
+<RAMB16BWER(DATA_WIDTH_A=9,DATA_WIDTH_B=9,DOA_REG=0,DOB_REG=0,EN_RSTRAM_A="TRUE",EN_RSTRAM_B="TRUE",INITP_00=256'b0,INITP_01=256'b0,INITP_02=256'b0,INITP_03=256'b0,INITP_04=256'b0,INITP_05=256'b0,INITP_06=256'b0,INITP_07=256'b0,INIT_00=256'b01010100001000000000000000000000000000000000000000000010100001000010000000000000000000000000000011000100001000000000,INIT_01=256'b0101000101000010000000000000000000000000000000000000000000000000000000000000000000000000,INIT_02=256'b0110011101000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,INIT_03=256'b010000100000000000000000000000000000000000000000000000000000000000000000,INIT_04=256'b0,INIT_05=256'b0,INIT_06=256'b0,INIT_07=256'b0,INIT_08=256'b0,INIT_09=256'b0,INIT_0A=256'b0,INIT_0B=256'b0,INIT_0C=256'b0,INIT_0D=256'b0,INIT_0E=256'b0,INIT_0F=256'b0,INIT_10=256'b0,INIT_11=256'b0,INIT_12=256'b0,INIT_13=256'b0,INIT_14=256'b0,INIT_15=256'b0,INIT_16=256'b0,INIT_17=256'b0,INIT
+_18=256'b0,INIT_19=256'b0,INIT_1A=256'b0,INIT_1B=256'b0,INIT_1C=256'b0,INIT_1D=256'b0,INIT_1E=256'b0,INIT_1F=256'b0,INIT_20=256'b0,INIT_21=256'b0,INIT_22=256'b0,INIT_23=256'b0,INIT_24=256'b0,INIT_25=256'b0,INIT_26=256'b0,INIT_27=256'b0,INIT_28=256'b0,INIT_29=256'b0,INIT_2A=256'b0,INIT_2B=256'b0,INIT_2C=256'b0,INIT_2D=256'b0,INIT_2E=256'b0,INIT_2F=256'b0,INIT_30=256'b0,INIT_31=256'b0,INIT_32=256'b0,INIT_33=256'b0,INIT_34=256'b0,INIT_35=256'b0,INIT_36=256'b0,INIT_37=256'b0,INIT_38=256'b0,INIT_39=256'b0,INIT_3A=256'b0,INIT_3B=256'b0,INIT_3C=256'b0,INIT_3D=256'b0,INIT_3E=256'b0,INIT_3F=256'b0,INIT_A=36'b0,INIT_B=36'b0,INIT_FILE="NONE",RSTTYPE="SYNC",RST_PRIORITY_A="CE",RST_PRIORITY_B="CE",SIM_COLLISION_CHECK="ALL",SIM_DEVICE="SPARTAN6",SRVAL_A=36'b0,SRVAL_B=36'b0,WRITE_MODE_A="WRITE_FIRST",WRITE_MODE_B="WRITE_FIRST")>.
+WARNING:HDLCompiler:189 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\BRAMBlock.v" Line 132: Size mismatch in connection of port <DOA>. Formal port size is 32-bit while actual signal size is 8-bit.
+WARNING:HDLCompiler:189 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\BRAMBlock.v" Line 135: Size mismatch in connection of port <DOB>. Formal port size is 32-bit while actual signal size is 8-bit.
+WARNING:HDLCompiler:1127 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" Line 141: Assignment to mch_WORDB ignored, since the identifier is never used
+
+Elaborating module <deviefive>.
+
+Elaborating module <UnBounceBB>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <my_FCPU>.
+    Related source file is "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v".
+INFO:Xst:3210 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" line 133: Output port <q_b> of the instance <BRAM_progg> is unconnected or connected to loadless signal.
+WARNING:Xst:2999 - Signal 'digits_rom', unconnected in block 'my_FCPU', is tied to its initial value.
+    Found 16x7-bit single-port Read Only RAM <Mram_digits_rom> for signal <digits_rom>.
+    Found 1-bit register for signal <readyCPU>.
+    Found 1-bit register for signal <TTtrg>.
+    Found 8-bit register for signal <PC>.
+    Found 8-bit register for signal <IRcomm>.
+    Found 1-bit register for signal <pls>.
+    Found 8-bit register for signal <R0>.
+    Found 8-bit register for signal <R1>.
+    Found 8-bit register for signal <R2>.
+    Found 8-bit register for signal <R3>.
+    Found 4-bit register for signal <row>.
+    Found 8-bit subtractor for signal <muxSrc<3>> created at line 95.
+    Found 8-bit adder for signal <PC_adder> created at line 87.
+    Found 8-bit adder for signal <muxSrc<1>> created at line 94.
+    Found 4-bit shifter logical left for signal <DCWR> created at line 83
+    Found 8x8-bit multiplier for signal <n0097> created at line 96.
+    Found 8-bit 8-to-1 multiplexer for signal <SourceC> created at line 115.
+    Found 8-bit 4-to-1 multiplexer for signal <muxSrc<0>> created at line 103.
+    Found 8-bit 4-to-1 multiplexer for signal <SRCB> created at line 79.
+    Found 4-bit 4-to-1 multiplexer for signal <Digit1> created at line 119.
+    Found 4-bit 4-to-1 multiplexer for signal <Digit2> created at line 120.
+    Found 4-bit 4-to-1 multiplexer for signal <Digit3> created at line 121.
+    Found 4-bit 4-to-1 multiplexer for signal <Digit4> created at line 122.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   1 Multiplier(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred  55 D-type flip-flop(s).
+	inferred  11 Multiplexer(s).
+	inferred   1 Combinational logic shifter(s).
+Unit <my_FCPU> synthesized.
+
+Synthesizing Unit <div_8u_8u>.
+    Related source file is "".
+    Found 16-bit adder for signal <n0292> created at line 0.
+    Found 16-bit adder for signal <GND_3_o_b[7]_add_1_OUT> created at line 0.
+    Found 15-bit adder for signal <n0296> created at line 0.
+    Found 15-bit adder for signal <GND_3_o_b[7]_add_3_OUT> created at line 0.
+    Found 14-bit adder for signal <n0300> created at line 0.
+    Found 14-bit adder for signal <GND_3_o_b[7]_add_5_OUT> created at line 0.
+    Found 13-bit adder for signal <n0304> created at line 0.
+    Found 13-bit adder for signal <GND_3_o_b[7]_add_7_OUT> created at line 0.
+    Found 12-bit adder for signal <n0308> created at line 0.
+    Found 12-bit adder for signal <GND_3_o_b[7]_add_9_OUT> created at line 0.
+    Found 11-bit adder for signal <n0312> created at line 0.
+    Found 11-bit adder for signal <GND_3_o_b[7]_add_11_OUT> created at line 0.
+    Found 10-bit adder for signal <n0316> created at line 0.
+    Found 10-bit adder for signal <GND_3_o_b[7]_add_13_OUT> created at line 0.
+    Found 9-bit adder for signal <n0320> created at line 0.
+    Found 9-bit adder for signal <GND_3_o_b[7]_add_15_OUT> created at line 0.
+    Found 16-bit comparator lessequal for signal <BUS_0001> created at line 0
+    Found 15-bit comparator lessequal for signal <BUS_0002> created at line 0
+    Found 14-bit comparator lessequal for signal <BUS_0003> created at line 0
+    Found 13-bit comparator lessequal for signal <BUS_0004> created at line 0
+    Found 12-bit comparator lessequal for signal <BUS_0005> created at line 0
+    Found 11-bit comparator lessequal for signal <BUS_0006> created at line 0
+    Found 10-bit comparator lessequal for signal <BUS_0007> created at line 0
+    Found 9-bit comparator lessequal for signal <BUS_0008> created at line 0
+    Found 8-bit comparator lessequal for signal <BUS_0009> created at line 0
+    Summary:
+	inferred  16 Adder/Subtractor(s).
+	inferred   9 Comparator(s).
+	inferred  57 Multiplexer(s).
+Unit <div_8u_8u> synthesized.
+
+Synthesizing Unit <mod_8u_8u>.
+    Related source file is "".
+    Found 16-bit adder for signal <n0292> created at line 0.
+    Found 16-bit adder for signal <GND_4_o_b[7]_add_1_OUT> created at line 0.
+    Found 15-bit adder for signal <n0296> created at line 0.
+    Found 15-bit adder for signal <GND_4_o_b[7]_add_3_OUT> created at line 0.
+    Found 14-bit adder for signal <n0300> created at line 0.
+    Found 14-bit adder for signal <GND_4_o_b[7]_add_5_OUT> created at line 0.
+    Found 13-bit adder for signal <n0304> created at line 0.
+    Found 13-bit adder for signal <GND_4_o_b[7]_add_7_OUT> created at line 0.
+    Found 12-bit adder for signal <n0308> created at line 0.
+    Found 12-bit adder for signal <GND_4_o_b[7]_add_9_OUT> created at line 0.
+    Found 11-bit adder for signal <n0312> created at line 0.
+    Found 11-bit adder for signal <GND_4_o_b[7]_add_11_OUT> created at line 0.
+    Found 10-bit adder for signal <n0316> created at line 0.
+    Found 10-bit adder for signal <GND_4_o_b[7]_add_13_OUT> created at line 0.
+    Found 9-bit adder for signal <n0320> created at line 0.
+    Found 9-bit adder for signal <GND_4_o_b[7]_add_15_OUT> created at line 0.
+    Found 8-bit adder for signal <n0324> created at line 0.
+    Found 8-bit adder for signal <a[7]_b[7]_add_17_OUT[7:0]> created at line 0.
+    Found 16-bit comparator lessequal for signal <BUS_0001> created at line 0
+    Found 15-bit comparator lessequal for signal <BUS_0002> created at line 0
+    Found 14-bit comparator lessequal for signal <BUS_0003> created at line 0
+    Found 13-bit comparator lessequal for signal <BUS_0004> created at line 0
+    Found 12-bit comparator lessequal for signal <BUS_0005> created at line 0
+    Found 11-bit comparator lessequal for signal <BUS_0006> created at line 0
+    Found 10-bit comparator lessequal for signal <BUS_0007> created at line 0
+    Found 9-bit comparator lessequal for signal <BUS_0008> created at line 0
+    Found 8-bit comparator lessequal for signal <BUS_0009> created at line 0
+    Summary:
+	inferred  18 Adder/Subtractor(s).
+	inferred   9 Comparator(s).
+	inferred  58 Multiplexer(s).
+Unit <mod_8u_8u> synthesized.
+
+Synthesizing Unit <RAM8>.
+    Related source file is "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\BRAMBlock.v".
+    Summary:
+	no macro.
+Unit <RAM8> synthesized.
+
+Synthesizing Unit <deviefive>.
+    Related source file is "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\deviefive.v".
+    Found 1-bit register for signal <cnt<1>>.
+    Found 1-bit register for signal <cnt<2>>.
+    Found 1-bit register for signal <cnt<3>>.
+    Found 1-bit register for signal <cnt<4>>.
+    Found 1-bit register for signal <cnt<5>>.
+    Found 1-bit register for signal <cnt<6>>.
+    Found 1-bit register for signal <cnt<7>>.
+    Found 1-bit register for signal <cnt<8>>.
+    Found 1-bit register for signal <cnt<9>>.
+    Found 1-bit register for signal <cnt<10>>.
+    Found 1-bit register for signal <cnt<11>>.
+    Found 1-bit register for signal <cnt<12>>.
+    Found 1-bit register for signal <cnt<13>>.
+    Found 1-bit register for signal <cnt<14>>.
+    Found 1-bit register for signal <cnt<15>>.
+    Found 1-bit register for signal <cnt<16>>.
+    Found 1-bit register for signal <cnt<17>>.
+    Found 1-bit register for signal <cnt<18>>.
+    Found 1-bit register for signal <cnt<19>>.
+    Found 1-bit register for signal <cnt<20>>.
+    Found 1-bit register for signal <cnt<21>>.
+    Found 1-bit register for signal <cnt<22>>.
+    Found 1-bit register for signal <cnt<23>>.
+    Found 1-bit register for signal <cnt<24>>.
+    Found 1-bit register for signal <cnt<25>>.
+    Found 1-bit register for signal <cnt<0>>.
+    Summary:
+	inferred  26 D-type flip-flop(s).
+Unit <deviefive> synthesized.
+
+Synthesizing Unit <UnBounceBB>.
+    Related source file is "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\UnBounceBB.v".
+        STAGE = 10
+    Found 1-bit register for signal <deb>.
+    Found 10-bit register for signal <chain>.
+    Summary:
+	inferred  11 D-type flip-flop(s).
+Unit <UnBounceBB> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 16x7-bit single-port Read Only RAM                    : 1
+# Multipliers                                          : 1
+ 8x8-bit multiplier                                    : 1
+# Adders/Subtractors                                   : 37
+ 10-bit adder                                          : 4
+ 11-bit adder                                          : 4
+ 12-bit adder                                          : 4
+ 13-bit adder                                          : 4
+ 14-bit adder                                          : 4
+ 15-bit adder                                          : 4
+ 16-bit adder                                          : 4
+ 8-bit adder                                           : 4
+ 8-bit subtractor                                      : 1
+ 9-bit adder                                           : 4
+# Registers                                            : 40
+ 1-bit register                                        : 31
+ 10-bit register                                       : 2
+ 4-bit register                                        : 1
+ 8-bit register                                        : 6
+# Comparators                                          : 18
+ 10-bit comparator lessequal                           : 2
+ 11-bit comparator lessequal                           : 2
+ 12-bit comparator lessequal                           : 2
+ 13-bit comparator lessequal                           : 2
+ 14-bit comparator lessequal                           : 2
+ 15-bit comparator lessequal                           : 2
+ 16-bit comparator lessequal                           : 2
+ 8-bit comparator lessequal                            : 2
+ 9-bit comparator lessequal                            : 2
+# Multiplexers                                         : 126
+ 1-bit 2-to-1 multiplexer                              : 112
+ 4-bit 2-to-1 multiplexer                              : 3
+ 4-bit 4-to-1 multiplexer                              : 4
+ 8-bit 2-to-1 multiplexer                              : 4
+ 8-bit 4-to-1 multiplexer                              : 2
+ 8-bit 8-to-1 multiplexer                              : 1
+# Logic shifters                                       : 1
+ 4-bit shifter logical left                            : 1
+# Xors                                                 : 1
+ 8-bit xor2                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1426 - The value init of the FF/Latch readyCPU hinder the constant cleaning in the block my_FCPU.
+   You should achieve better results by setting this init to 1.
+
+Synthesizing (advanced) Unit <my_FCPU>.
+The following registers are absorbed into accumulator <PC>: 1 register on signal <PC>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_digits_rom> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 7-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <Connect_MUX>   |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <DATA_OUT>      |          |
+    -----------------------------------------------------------------------
+Unit <my_FCPU> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 16x7-bit single-port distributed Read Only RAM        : 1
+# Multipliers                                          : 1
+ 8x8-bit multiplier                                    : 1
+# Adders/Subtractors                                   : 19
+ 8-bit adder                                           : 1
+ 8-bit adder carry in                                  : 17
+ 8-bit subtractor                                      : 1
+# Accumulators                                         : 1
+ 8-bit up loadable accumulator                         : 1
+# Registers                                            : 95
+ Flip-Flops                                            : 95
+# Comparators                                          : 18
+ 10-bit comparator lessequal                           : 2
+ 11-bit comparator lessequal                           : 2
+ 12-bit comparator lessequal                           : 2
+ 13-bit comparator lessequal                           : 2
+ 14-bit comparator lessequal                           : 2
+ 15-bit comparator lessequal                           : 2
+ 16-bit comparator lessequal                           : 2
+ 8-bit comparator lessequal                            : 2
+ 9-bit comparator lessequal                            : 2
+# Multiplexers                                         : 128
+ 1-bit 2-to-1 multiplexer                              : 112
+ 1-bit 4-to-1 multiplexer                              : 4
+ 4-bit 2-to-1 multiplexer                              : 3
+ 4-bit 4-to-1 multiplexer                              : 3
+ 8-bit 2-to-1 multiplexer                              : 3
+ 8-bit 4-to-1 multiplexer                              : 2
+ 8-bit 8-to-1 multiplexer                              : 1
+# Logic shifters                                       : 1
+ 4-bit shifter logical left                            : 1
+# Xors                                                 : 1
+ 8-bit xor2                                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1426 - The value init of the FF/Latch readyCPU hinder the constant cleaning in the block my_FCPU.
+   You should achieve better results by setting this init to 1.
+
+Optimizing unit <my_FCPU> ...
+
+Optimizing unit <deviefive> ...
+
+Optimizing unit <UnBounceBB> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block my_FCPU, actual ratio is 6.
+
+Final Macro Processing ...
+
+Processing Unit <my_FCPU> :
+	Found 2-bit shift register for signal <ubnc_b/chain_1>.
+	Found 2-bit shift register for signal <ubnc_a/chain_1>.
+Unit <my_FCPU> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 99
+ Flip-Flops                                            : 99
+# Shift Registers                                      : 2
+ 2-bit shift register                                  : 2
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : my_FCPU.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 568
+#      GND                         : 1
+#      INV                         : 29
+#      LUT2                        : 34
+#      LUT3                        : 26
+#      LUT4                        : 43
+#      LUT5                        : 59
+#      LUT6                        : 248
+#      MUXCY                       : 50
+#      MUXF7                       : 19
+#      VCC                         : 1
+#      XORCY                       : 58
+# FlipFlops/Latches                : 101
+#      FD                          : 48
+#      FDE                         : 51
+#      FDR                         : 2
+# RAMS                             : 1
+#      RAMB16BWER                  : 1
+# Shift Registers                  : 2
+#      SRLC16E                     : 2
+# Clock Buffers                    : 3
+#      BUFG                        : 2
+#      BUFGP                       : 1
+# IO Buffers                       : 17
+#      IBUF                        : 2
+#      OBUF                        : 15
+# DSPs                             : 1
+#      DSP48A1                     : 1
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx9tqg144-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             101  out of  11440     0%  
+ Number of Slice LUTs:                  441  out of   5720     7%  
+    Number used as Logic:               439  out of   5720     7%  
+    Number used as Memory:                2  out of   1440     0%  
+       Number used as SRL:                2
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    477
+   Number with an unused Flip Flop:     376  out of    477    78%  
+   Number with an unused LUT:            36  out of    477     7%  
+   Number of fully used LUT-FF pairs:    65  out of    477    13%  
+   Number of unique control sets:        38
+
+IO Utilization: 
+ Number of IOs:                          18
+ Number of bonded IOBs:                  18  out of    102    17%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:                1  out of     32     3%  
+    Number using Block RAM only:          1
+ Number of BUFG/BUFGCTRLs:                3  out of     16    18%  
+ Number of DSP48A1s:                      1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+fvDev/cnt_17                       | NONE(row_0)            | 5     |
+fvDev/cnt_25                       | BUFG                   | 51    |
+fvDev/cnt_24                       | NONE(fvDev/cnt_25)     | 1     |
+fvDev/cnt_23                       | NONE(fvDev/cnt_24)     | 1     |
+fvDev/cnt_22                       | NONE(fvDev/cnt_23)     | 1     |
+fvDev/cnt_21                       | NONE(fvDev/cnt_22)     | 1     |
+fvDev/cnt_20                       | NONE(fvDev/cnt_21)     | 1     |
+fvDev/cnt_19                       | NONE(fvDev/cnt_20)     | 1     |
+fvDev/cnt_18                       | NONE(fvDev/cnt_19)     | 1     |
+fvDev/cnt_16                       | NONE(fvDev/cnt_17)     | 1     |
+fvDev/cnt_15                       | NONE(fvDev/cnt_16)     | 1     |
+fvDev/cnt_14                       | BUFG                   | 23    |
+fvDev/cnt_13                       | NONE(fvDev/cnt_14)     | 1     |
+fvDev/cnt_12                       | NONE(fvDev/cnt_13)     | 1     |
+fvDev/cnt_11                       | NONE(fvDev/cnt_12)     | 1     |
+fvDev/cnt_10                       | NONE(fvDev/cnt_11)     | 1     |
+fvDev/cnt_9                        | NONE(fvDev/cnt_10)     | 1     |
+fvDev/cnt_8                        | NONE(fvDev/cnt_9)      | 1     |
+fvDev/cnt_7                        | NONE(fvDev/cnt_8)      | 1     |
+fvDev/cnt_6                        | NONE(fvDev/cnt_7)      | 1     |
+fvDev/cnt_5                        | NONE(fvDev/cnt_6)      | 1     |
+fvDev/cnt_4                        | NONE(fvDev/cnt_5)      | 1     |
+fvDev/cnt_3                        | NONE(fvDev/cnt_4)      | 1     |
+fvDev/cnt_2                        | NONE(fvDev/cnt_3)      | 1     |
+fvDev/cnt_1                        | NONE(fvDev/cnt_2)      | 1     |
+fvDev/cnt_0                        | NONE(fvDev/cnt_1)      | 1     |
+clk                                | BUFGP                  | 2     |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 19.665ns (Maximum Frequency: 50.853MHz)
+   Minimum input arrival time before clock: 1.801ns
+   Maximum output required time after clock: 8.601ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_17'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 5 / 5
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_18 (FF)
+  Destination:       fvDev/cnt_18 (FF)
+  Source Clock:      fvDev/cnt_17 rising
+  Destination Clock: fvDev/cnt_17 rising
+
+  Data Path: fvDev/cnt_18 to fvDev/cnt_18
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_18 (fvDev/cnt_18)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[18]_INV_272_o1_INV_0 (fvDev/cnt[18]_INV_272_o)
+     FD:D                      0.102          fvDev/cnt_18
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_25'
+  Clock period: 19.665ns (frequency: 50.853MHz)
+  Total number of paths / destination ports: 2342274347 / 91
+-------------------------------------------------------------------------
+Delay:               19.665ns (Levels of Logic = 24)
+  Source:            IRcomm_1 (FF)
+  Destination:       R0_6 (FF)
+  Source Clock:      fvDev/cnt_25 falling
+  Destination Clock: fvDev/cnt_25 falling
+
+  Data Path: IRcomm_1 to R0_6
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             32   0.447   1.292  IRcomm_1 (IRcomm_1)
+     LUT6:I5->O            2   0.205   0.845  Mmux_muxSrc<0>81_1 (Mmux_muxSrc<0>81)
+     LUT3:I0->O            1   0.205   0.808  SRCB[7]_SRCA[7]_mod_23/BUS_0004_INV_182_o111_1 (SRCB[7]_SRCA[7]_mod_23/BUS_0004_INV_182_o111)
+     LUT6:I3->O            3   0.205   0.755  muxSrc<5><7> (muxSrc<5><7>)
+     LUT6:I4->O           14   0.203   0.958  SRCB[7]_SRCA[7]_div_22/a[7]_GND_3_o_MUX_99_o1 (SRCB[7]_SRCA[7]_div_22/a[7]_GND_3_o_MUX_99_o)
+     LUT6:I5->O            1   0.205   0.808  muxSrc<5><4>11_SW0 (N294)
+     LUT6:I3->O           16   0.205   1.005  muxSrc<5><4>11 (muxSrc<5><4>)
+     LUT6:I5->O           10   0.205   0.857  SRCB[7]_SRCA[7]_div_22/Mmux_a[0]_GND_3_o_MUX_156_o161 (SRCB[7]_SRCA[7]_div_22/a[6]_GND_3_o_MUX_150_o)
+     LUT6:I5->O            2   0.205   0.617  muxSrc<5><3>11_1 (muxSrc<5><3>11)
+     LUT6:I5->O            4   0.205   0.683  SRCB[7]_SRCA[7]_mod_23/Mmux_a[0]_GND_4_o_MUX_313_o141 (SRCB[7]_SRCA[7]_mod_23/a[4]_GND_4_o_MUX_309_o)
+     MUXCY:DI->O           1   0.145   0.000  SRCB[7]_SRCA[7]_mod_23/Madd_GND_4_o_b[7]_add_13_OUT_Madd_Madd_cy<4> (SRCB[7]_SRCA[7]_mod_23/Madd_GND_4_o_b[7]_add_13_OUT_Madd_Madd_cy<4>)
+     XORCY:CI->O          18   0.180   1.050  SRCB[7]_SRCA[7]_mod_23/Madd_GND_4_o_b[7]_add_13_OUT_Madd_Madd_xor<5> (SRCB[7]_SRCA[7]_mod_23/GND_4_o_b[7]_add_13_OUT<5>)
+     LUT6:I5->O            1   0.205   0.000  SRCB[7]_SRCA[7]_mod_23/BUS_0007_INV_221_o24_SW20_F (N376)
+     MUXF7:I0->O           1   0.131   0.827  SRCB[7]_SRCA[7]_mod_23/BUS_0007_INV_221_o24_SW20 (N284)
+     LUT6:I2->O            2   0.203   0.721  SRCB[7]_SRCA[7]_mod_23/BUS_0008_INV_232_o1_SW1 (N31)
+     LUT5:I3->O           16   0.203   1.005  SRCB[7]_SRCA[7]_mod_23/BUS_0008_INV_232_o1 (SRCB[7]_SRCA[7]_mod_23/BUS_0008_INV_232_o2)
+     LUT6:I5->O            7   0.205   0.773  SRCB[7]_SRCA[7]_mod_23/Mmux_n032241 (SRCB[7]_SRCA[7]_mod_23/n0322<3>)
+     MUXCY:DI->O           1   0.145   0.000  SRCB[7]_SRCA[7]_mod_23/Madd_a[7]_b[7]_add_17_OUT[7:0]_Madd_cy<3> (SRCB[7]_SRCA[7]_mod_23/Madd_a[7]_b[7]_add_17_OUT[7:0]_Madd_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  SRCB[7]_SRCA[7]_mod_23/Madd_a[7]_b[7]_add_17_OUT[7:0]_Madd_cy<4> (SRCB[7]_SRCA[7]_mod_23/Madd_a[7]_b[7]_add_17_OUT[7:0]_Madd_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  SRCB[7]_SRCA[7]_mod_23/Madd_a[7]_b[7]_add_17_OUT[7:0]_Madd_cy<5> (SRCB[7]_SRCA[7]_mod_23/Madd_a[7]_b[7]_add_17_OUT[7:0]_Madd_cy<5>)
+     XORCY:CI->O           2   0.180   0.617  SRCB[7]_SRCA[7]_mod_23/Madd_a[7]_b[7]_add_17_OUT[7:0]_Madd_xor<6> (SRCB[7]_SRCA[7]_mod_23/a[7]_b[7]_add_17_OUT[7:0]<6>)
+     LUT6:I5->O            1   0.205   0.684  SRCB[7]_SRCA[7]_mod_23/BUS_0009_INV_242_o1_SW4 (N200)
+     LUT5:I3->O            1   0.203   0.580  SRCB[7]_SRCA[7]_mod_23/Mmux_o71 (muxSrc<6><6>)
+     LUT6:I5->O            1   0.205   0.000  Mmux_SourceC_36 (Mmux_SourceC_36)
+     MUXF7:I1->O           4   0.140   0.000  Mmux_SourceC_2_f7_5 (SourceC<6>)
+     FDE:D                     0.102          R0_6
+    ----------------------------------------
+    Total                     19.665ns (4.780ns logic, 14.885ns route)
+                                       (24.3% logic, 75.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_24'
+  Clock period: 1.913ns (frequency: 522.821MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.913ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_25 (FF)
+  Destination:       fvDev/cnt_25 (FF)
+  Source Clock:      fvDev/cnt_24 rising
+  Destination Clock: fvDev/cnt_24 rising
+
+  Data Path: fvDev/cnt_25 to fvDev/cnt_25
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.447   0.579  fvDev/cnt_25 (fvDev/cnt_25)
+     INV:I->O              1   0.206   0.579  fvDev/cnt_25_BUFG_LUT1_INV_0 (fvDev/cnt_25_BUFG_LUT1)
+     FD:D                      0.102          fvDev/cnt_25
+    ----------------------------------------
+    Total                      1.913ns (0.755ns logic, 1.158ns route)
+                                       (39.5% logic, 60.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_23'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_24 (FF)
+  Destination:       fvDev/cnt_24 (FF)
+  Source Clock:      fvDev/cnt_23 rising
+  Destination Clock: fvDev/cnt_23 rising
+
+  Data Path: fvDev/cnt_24 to fvDev/cnt_24
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_24 (fvDev/cnt_24)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[24]_INV_278_o1_INV_0 (fvDev/cnt[24]_INV_278_o)
+     FD:D                      0.102          fvDev/cnt_24
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_22'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_23 (FF)
+  Destination:       fvDev/cnt_23 (FF)
+  Source Clock:      fvDev/cnt_22 rising
+  Destination Clock: fvDev/cnt_22 rising
+
+  Data Path: fvDev/cnt_23 to fvDev/cnt_23
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_23 (fvDev/cnt_23)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[23]_INV_277_o1_INV_0 (fvDev/cnt[23]_INV_277_o)
+     FD:D                      0.102          fvDev/cnt_23
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_21'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_22 (FF)
+  Destination:       fvDev/cnt_22 (FF)
+  Source Clock:      fvDev/cnt_21 rising
+  Destination Clock: fvDev/cnt_21 rising
+
+  Data Path: fvDev/cnt_22 to fvDev/cnt_22
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_22 (fvDev/cnt_22)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[22]_INV_276_o1_INV_0 (fvDev/cnt[22]_INV_276_o)
+     FD:D                      0.102          fvDev/cnt_22
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_20'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_21 (FF)
+  Destination:       fvDev/cnt_21 (FF)
+  Source Clock:      fvDev/cnt_20 rising
+  Destination Clock: fvDev/cnt_20 rising
+
+  Data Path: fvDev/cnt_21 to fvDev/cnt_21
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_21 (fvDev/cnt_21)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[21]_INV_275_o1_INV_0 (fvDev/cnt[21]_INV_275_o)
+     FD:D                      0.102          fvDev/cnt_21
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_19'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_20 (FF)
+  Destination:       fvDev/cnt_20 (FF)
+  Source Clock:      fvDev/cnt_19 rising
+  Destination Clock: fvDev/cnt_19 rising
+
+  Data Path: fvDev/cnt_20 to fvDev/cnt_20
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_20 (fvDev/cnt_20)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[20]_INV_274_o1_INV_0 (fvDev/cnt[20]_INV_274_o)
+     FD:D                      0.102          fvDev/cnt_20
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_18'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_19 (FF)
+  Destination:       fvDev/cnt_19 (FF)
+  Source Clock:      fvDev/cnt_18 rising
+  Destination Clock: fvDev/cnt_18 rising
+
+  Data Path: fvDev/cnt_19 to fvDev/cnt_19
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_19 (fvDev/cnt_19)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[19]_INV_273_o1_INV_0 (fvDev/cnt[19]_INV_273_o)
+     FD:D                      0.102          fvDev/cnt_19
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_16'
+  Clock period: 2.078ns (frequency: 481.325MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.078ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_17 (FF)
+  Destination:       fvDev/cnt_17 (FF)
+  Source Clock:      fvDev/cnt_16 rising
+  Destination Clock: fvDev/cnt_16 rising
+
+  Data Path: fvDev/cnt_17 to fvDev/cnt_17
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               6   0.447   0.744  fvDev/cnt_17 (fvDev/cnt_17)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[17]_INV_271_o1_INV_0 (fvDev/cnt[17]_INV_271_o)
+     FD:D                      0.102          fvDev/cnt_17
+    ----------------------------------------
+    Total                      2.078ns (0.755ns logic, 1.323ns route)
+                                       (36.3% logic, 63.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_15'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_16 (FF)
+  Destination:       fvDev/cnt_16 (FF)
+  Source Clock:      fvDev/cnt_15 rising
+  Destination Clock: fvDev/cnt_15 rising
+
+  Data Path: fvDev/cnt_16 to fvDev/cnt_16
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_16 (fvDev/cnt_16)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[16]_INV_270_o1_INV_0 (fvDev/cnt[16]_INV_270_o)
+     FD:D                      0.102          fvDev/cnt_16
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_14'
+  Clock period: 3.325ns (frequency: 300.756MHz)
+  Total number of paths / destination ports: 57 / 23
+-------------------------------------------------------------------------
+Delay:               3.325ns (Levels of Logic = 2)
+  Source:            ubnc_b/chain_6 (FF)
+  Destination:       ubnc_b/deb (FF)
+  Source Clock:      fvDev/cnt_14 falling
+  Destination Clock: fvDev/cnt_14 falling
+
+  Data Path: ubnc_b/chain_6 to ubnc_b/deb
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               3   0.447   0.879  ubnc_b/chain_6 (ubnc_b/chain_6)
+     LUT4:I1->O            1   0.205   0.580  ubnc_b/_n0013_SW0 (N44)
+     LUT6:I5->O            1   0.205   0.579  ubnc_b/_n0013 (ubnc_b/_n0013)
+     FDR:R                     0.430          ubnc_b/deb
+    ----------------------------------------
+    Total                      3.325ns (1.287ns logic, 2.038ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_13'
+  Clock period: 1.913ns (frequency: 522.821MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.913ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_14 (FF)
+  Destination:       fvDev/cnt_14 (FF)
+  Source Clock:      fvDev/cnt_13 rising
+  Destination Clock: fvDev/cnt_13 rising
+
+  Data Path: fvDev/cnt_14 to fvDev/cnt_14
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.447   0.579  fvDev/cnt_14 (fvDev/cnt_14)
+     INV:I->O              1   0.206   0.579  fvDev/cnt_14_BUFG_LUT1_INV_0 (fvDev/cnt_14_BUFG_LUT1)
+     FD:D                      0.102          fvDev/cnt_14
+    ----------------------------------------
+    Total                      1.913ns (0.755ns logic, 1.158ns route)
+                                       (39.5% logic, 60.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_12'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_13 (FF)
+  Destination:       fvDev/cnt_13 (FF)
+  Source Clock:      fvDev/cnt_12 rising
+  Destination Clock: fvDev/cnt_12 rising
+
+  Data Path: fvDev/cnt_13 to fvDev/cnt_13
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_13 (fvDev/cnt_13)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[13]_INV_267_o1_INV_0 (fvDev/cnt[13]_INV_267_o)
+     FD:D                      0.102          fvDev/cnt_13
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_11'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_12 (FF)
+  Destination:       fvDev/cnt_12 (FF)
+  Source Clock:      fvDev/cnt_11 rising
+  Destination Clock: fvDev/cnt_11 rising
+
+  Data Path: fvDev/cnt_12 to fvDev/cnt_12
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_12 (fvDev/cnt_12)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[12]_INV_266_o1_INV_0 (fvDev/cnt[12]_INV_266_o)
+     FD:D                      0.102          fvDev/cnt_12
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_10'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_11 (FF)
+  Destination:       fvDev/cnt_11 (FF)
+  Source Clock:      fvDev/cnt_10 rising
+  Destination Clock: fvDev/cnt_10 rising
+
+  Data Path: fvDev/cnt_11 to fvDev/cnt_11
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_11 (fvDev/cnt_11)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[11]_INV_265_o1_INV_0 (fvDev/cnt[11]_INV_265_o)
+     FD:D                      0.102          fvDev/cnt_11
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_9'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_10 (FF)
+  Destination:       fvDev/cnt_10 (FF)
+  Source Clock:      fvDev/cnt_9 rising
+  Destination Clock: fvDev/cnt_9 rising
+
+  Data Path: fvDev/cnt_10 to fvDev/cnt_10
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_10 (fvDev/cnt_10)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[10]_INV_264_o1_INV_0 (fvDev/cnt[10]_INV_264_o)
+     FD:D                      0.102          fvDev/cnt_10
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_8'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_9 (FF)
+  Destination:       fvDev/cnt_9 (FF)
+  Source Clock:      fvDev/cnt_8 rising
+  Destination Clock: fvDev/cnt_8 rising
+
+  Data Path: fvDev/cnt_9 to fvDev/cnt_9
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_9 (fvDev/cnt_9)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[9]_INV_263_o1_INV_0 (fvDev/cnt[9]_INV_263_o)
+     FD:D                      0.102          fvDev/cnt_9
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_7'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_8 (FF)
+  Destination:       fvDev/cnt_8 (FF)
+  Source Clock:      fvDev/cnt_7 rising
+  Destination Clock: fvDev/cnt_7 rising
+
+  Data Path: fvDev/cnt_8 to fvDev/cnt_8
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_8 (fvDev/cnt_8)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[8]_INV_262_o1_INV_0 (fvDev/cnt[8]_INV_262_o)
+     FD:D                      0.102          fvDev/cnt_8
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_6'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_7 (FF)
+  Destination:       fvDev/cnt_7 (FF)
+  Source Clock:      fvDev/cnt_6 rising
+  Destination Clock: fvDev/cnt_6 rising
+
+  Data Path: fvDev/cnt_7 to fvDev/cnt_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_7 (fvDev/cnt_7)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[7]_INV_261_o1_INV_0 (fvDev/cnt[7]_INV_261_o)
+     FD:D                      0.102          fvDev/cnt_7
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_5'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_6 (FF)
+  Destination:       fvDev/cnt_6 (FF)
+  Source Clock:      fvDev/cnt_5 rising
+  Destination Clock: fvDev/cnt_5 rising
+
+  Data Path: fvDev/cnt_6 to fvDev/cnt_6
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_6 (fvDev/cnt_6)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[6]_INV_260_o1_INV_0 (fvDev/cnt[6]_INV_260_o)
+     FD:D                      0.102          fvDev/cnt_6
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_4'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_5 (FF)
+  Destination:       fvDev/cnt_5 (FF)
+  Source Clock:      fvDev/cnt_4 rising
+  Destination Clock: fvDev/cnt_4 rising
+
+  Data Path: fvDev/cnt_5 to fvDev/cnt_5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_5 (fvDev/cnt_5)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[5]_INV_259_o1_INV_0 (fvDev/cnt[5]_INV_259_o)
+     FD:D                      0.102          fvDev/cnt_5
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_3'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_4 (FF)
+  Destination:       fvDev/cnt_4 (FF)
+  Source Clock:      fvDev/cnt_3 rising
+  Destination Clock: fvDev/cnt_3 rising
+
+  Data Path: fvDev/cnt_4 to fvDev/cnt_4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_4 (fvDev/cnt_4)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[4]_INV_258_o1_INV_0 (fvDev/cnt[4]_INV_258_o)
+     FD:D                      0.102          fvDev/cnt_4
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_2'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_3 (FF)
+  Destination:       fvDev/cnt_3 (FF)
+  Source Clock:      fvDev/cnt_2 rising
+  Destination Clock: fvDev/cnt_2 rising
+
+  Data Path: fvDev/cnt_3 to fvDev/cnt_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_3 (fvDev/cnt_3)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[3]_INV_257_o1_INV_0 (fvDev/cnt[3]_INV_257_o)
+     FD:D                      0.102          fvDev/cnt_3
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_1'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_2 (FF)
+  Destination:       fvDev/cnt_2 (FF)
+  Source Clock:      fvDev/cnt_1 rising
+  Destination Clock: fvDev/cnt_1 rising
+
+  Data Path: fvDev/cnt_2 to fvDev/cnt_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_2 (fvDev/cnt_2)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[2]_INV_256_o1_INV_0 (fvDev/cnt[2]_INV_256_o)
+     FD:D                      0.102          fvDev/cnt_2
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'fvDev/cnt_0'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_1 (FF)
+  Destination:       fvDev/cnt_1 (FF)
+  Source Clock:      fvDev/cnt_0 rising
+  Destination Clock: fvDev/cnt_0 rising
+
+  Data Path: fvDev/cnt_1 to fvDev/cnt_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_1 (fvDev/cnt_1)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[1]_INV_255_o1_INV_0 (fvDev/cnt[1]_INV_255_o)
+     FD:D                      0.102          fvDev/cnt_1
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 1.950ns (frequency: 512.794MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.950ns (Levels of Logic = 1)
+  Source:            fvDev/cnt_0 (FF)
+  Destination:       fvDev/cnt_0 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: fvDev/cnt_0 to fvDev/cnt_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.616  fvDev/cnt_0 (fvDev/cnt_0)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[0]_INV_254_o1_INV_0 (fvDev/cnt[0]_INV_254_o)
+     FD:D                      0.102          fvDev/cnt_0
+    ----------------------------------------
+    Total                      1.950ns (0.755ns logic, 1.195ns route)
+                                       (38.7% logic, 61.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'fvDev/cnt_14'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              1.801ns (Levels of Logic = 1)
+  Source:            BUT2 (PAD)
+  Destination:       ubnc_b/Mshreg_chain_1 (FF)
+  Destination Clock: fvDev/cnt_14 falling
+
+  Data Path: BUT2 to ubnc_b/Mshreg_chain_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.222   0.579  BUT2_IBUF (BUT2_IBUF)
+     SRLC16E:D                -0.060          ubnc_b/Mshreg_chain_1
+    ----------------------------------------
+    Total                      1.801ns (1.222ns logic, 0.579ns route)
+                                       (67.9% logic, 32.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'fvDev/cnt_25'
+  Total number of paths / destination ports: 368 / 11
+-------------------------------------------------------------------------
+Offset:              7.450ns (Levels of Logic = 4)
+  Source:            IRcomm_1 (FF)
+  Destination:       DATA_OUT<10> (PAD)
+  Source Clock:      fvDev/cnt_25 falling
+
+  Data Path: IRcomm_1 to DATA_OUT<10>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             32   0.447   1.539  IRcomm_1 (IRcomm_1)
+     LUT6:I2->O            1   0.203   0.684  Mmux_Connect_MUX62 (Mmux_Connect_MUX61)
+     LUT6:I4->O            7   0.203   1.021  Mmux_Connect_MUX65 (Connect_MUX<1>)
+     LUT4:I0->O            1   0.203   0.579  Mram_digits_rom51 (DATA_OUT_9_OBUF)
+     OBUF:I->O                 2.571          DATA_OUT_9_OBUF (DATA_OUT<9>)
+    ----------------------------------------
+    Total                      7.450ns (3.627ns logic, 3.823ns route)
+                                       (48.7% logic, 51.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'fvDev/cnt_17'
+  Total number of paths / destination ports: 1572 / 11
+-------------------------------------------------------------------------
+Offset:              8.556ns (Levels of Logic = 5)
+  Source:            row_3 (FF)
+  Destination:       DATA_OUT<10> (PAD)
+  Source Clock:      fvDev/cnt_17 rising
+
+  Data Path: row_3 to DATA_OUT<10>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q              16   0.447   1.252  row_3 (row_3)
+     LUT6:I2->O            4   0.203   1.048  Mmux_Connect_MUX171 (Mmux_Connect_MUX17)
+     LUT6:I0->O            1   0.203   0.827  Mmux_Connect_MUX123 (Mmux_Connect_MUX125)
+     LUT6:I2->O            7   0.203   1.021  Mmux_Connect_MUX125 (Connect_MUX<3>)
+     LUT4:I0->O            1   0.203   0.579  Mram_digits_rom41 (DATA_OUT_8_OBUF)
+     OBUF:I->O                 2.571          DATA_OUT_8_OBUF (DATA_OUT<8>)
+    ----------------------------------------
+    Total                      8.556ns (3.830ns logic, 4.726ns route)
+                                       (44.8% logic, 55.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'fvDev/cnt_14'
+  Total number of paths / destination ports: 672 / 7
+-------------------------------------------------------------------------
+Offset:              8.601ns (Levels of Logic = 5)
+  Source:            ubnc_a/deb (FF)
+  Destination:       DATA_OUT<10> (PAD)
+  Source Clock:      fvDev/cnt_14 falling
+
+  Data Path: ubnc_a/deb to DATA_OUT<10>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q             13   0.447   1.297  ubnc_a/deb (ubnc_a/deb)
+     LUT6:I0->O            4   0.203   1.048  Mmux_Connect_MUX171 (Mmux_Connect_MUX17)
+     LUT6:I0->O            1   0.203   0.827  Mmux_Connect_MUX123 (Mmux_Connect_MUX125)
+     LUT6:I2->O            7   0.203   1.021  Mmux_Connect_MUX125 (Connect_MUX<3>)
+     LUT4:I0->O            1   0.203   0.579  Mram_digits_rom41 (DATA_OUT_8_OBUF)
+     OBUF:I->O                 2.571          DATA_OUT_8_OBUF (DATA_OUT<8>)
+    ----------------------------------------
+    Total                      8.601ns (3.830ns logic, 4.771ns route)
+                                       (44.5% logic, 55.5% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    1.950|         |         |         |
+fvDev/cnt_25   |         |    1.511|         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_0
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_0    |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_1
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_1    |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_10
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_10   |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_11
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_11   |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_12
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_12   |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_13
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_13   |    1.913|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_14
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_14   |    1.950|         |    3.325|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_15
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_15   |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_16
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_16   |    2.078|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_17
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_17   |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_18
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_18   |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_19
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_19   |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_2
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_2    |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_20
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_20   |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_21
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_21   |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_22
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_22   |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_23
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_23   |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_24
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_24   |    1.913|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_25
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |         |         |    4.107|         |
+fvDev/cnt_25   |         |         |   19.665|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_3
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_3    |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_4
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_4    |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_5
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_5    |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_6
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_6    |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_7
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_7    |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_8
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_8    |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock fvDev/cnt_9
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+fvDev/cnt_9    |    1.950|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 11.68 secs
+ 
+--> 
+
+Total memory usage is 4505712 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    6 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
+

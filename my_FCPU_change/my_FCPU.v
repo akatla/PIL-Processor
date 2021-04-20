@@ -1,0 +1,193 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company:			SergEnt 
+// Engineer:		Letuchiy Sergey
+// 
+// Create Date:    20:14:19 06/22/2017 
+// Design Name: 	 first CPU 
+// Module Name:    my_FCPU 
+// Project Name: 	 f_CPUModule
+// Target Devices: SPARTAN 6
+// Tool versions:  1.0
+// Description: 	 First attempt to create ALU module
+//
+// Dependencies: 	 none
+//
+// Revision:		 2.0.9
+// Revision 0.04 - File Created
+// Additional Comments: none.
+//
+//////////////////////////////////////////////////////////////////////////////////
+module my_FCPU
+			( 
+				clk,								
+				BUT1,
+				BUT2,
+				DATA_OUT
+			);
+			input	 clk;
+			input	BUT1;
+			input BUT2;			
+			output [14:0]DATA_OUT;
+
+reg [6:0]digits_rom[15:0];
+
+initial begin
+			digits_rom[0] = 7'b1111110; 	// 0			
+			digits_rom[1] = 7'b0110000; 	// 1
+			digits_rom[2] = 7'b1101101; 	// 2		
+			digits_rom[3] = 7'b1111001; 	// 3
+			digits_rom[4] = 7'b0110011; 	// 4
+			digits_rom[5] = 7'b1011011; 	// 5
+			digits_rom[6] = 7'b1011111; 	// 6			
+			digits_rom[7] = 7'b1110000; 	// 7
+			digits_rom[8] = 7'b1111111; 	// 8
+			digits_rom[9] = 7'b1111011; 	// 9						
+			digits_rom[10] = 7'b1110111; 	// A			
+			digits_rom[11] = 7'b0011111; 	// B			
+			digits_rom[12] = 7'b1001110; 	// C
+			digits_rom[13] = 7'b0111101; 	// D
+			digits_rom[14] = 7'b1001111; 	// E		
+			digits_rom[15] = 7'b1000111; 	// F
+end
+
+// Registers section.
+reg [7:0]R0  = 8'b0000_0000;
+reg [7:0]R1  = 8'b0000_0000;
+reg [7:0]R2  = 8'b0000_0000;
+reg [7:0]R3  = 8'b0000_0000;		
+reg [7:0]PC  = 8'b1111_1111; 		// Since the memory is synchronous we put FF in PC register.
+reg [7:0]IRcomm = 8'b1111_1111;
+reg pls = 1'b1;
+reg [3:0]row = 4'b1110;
+reg readyCPU = 1'b0;
+reg TTtrg = 1'b0;
+
+// Wire section.
+wire in_BUT1;
+wire in_BUT2;
+wire [3:0]Connect_MUX;
+wire [15:0]Connect_MUXTWO; 
+wire [7:0]PC_adder;
+wire [7:0]mch_WORD;
+wire [7:0]mch_WORDB;
+wire is_cnt;
+wire is_dynamic;
+wire pullunb;
+wire dpmgc;
+wire [7:0]SRCA;
+wire [7:0]SRCB;
+wire [1:0]target = IRcomm[3:2];
+// ¬от в таком виде оно вроде как верно все делает!
+wire pcwr = (IRcomm[7:5] == 3'b010) & (IRcomm[1] == 1'b1);			// 010_x_xx1x 010_0_000
+wire [3:0]DCWR = {3'b000, {readyCPU & TTtrg & !pcwr}} << target;
+
+// Assign section.
+assign DATA_OUT[14:11] = ~DCWR[3:0]; // Now we can see how it works.
+assign PC_adder[7:0] = PC[7:0] + pls;
+
+assign DATA_OUT[3:0] = row[3:0];
+assign SRCA = (IRcomm[1:0] == 2'b00) ? R0 : (IRcomm[1:0] == 2'b01) ? R1 : (IRcomm[1:0] == 2'b10) ? R2 : R3;
+assign SRCB = (IRcomm[3:2] == 2'b00) ? R0 : (IRcomm[3:2] == 2'b01) ? R1 : (IRcomm[3:2] == 2'b10) ? R2 : R3;
+
+// List of commands.
+wire [7:0]adder = SRCA + SRCB;
+wire [7:0]suber = SRCB - SRCA;
+wire [7:0]muller = SRCA * SRCB;
+wire [7:0]devidd = SRCB / SRCA;
+wire [7:0]moddd = SRCB % SRCA;
+wire [7:0]stepen = SRCA ^ SRCB;
+
+// Commands package.
+// 8-ми разр€дный мультиплексор из 4-х проводов.
+wire [7:0]muxSrc[7:0] = {
+									stepen[7:0],	// 7	111
+									moddd[7:0],		// 6	110
+									devidd[7:0],	// 5	101
+									muller[7:0],	// 4	100								
+									suber[7:0],		// 3  011
+									mch_WORD[7:0],	// 2  010
+									adder[7:0],		// 1  001
+									SRCA[7:0]		// 0  000
+								};
+								
+// IRcomm[7:6] индексы проводников [3:0] - 00 01 10 11. 
+wire [7:0]SourceC = muxSrc[IRcomm[7:5]][7:0]; 
+
+// Mux - display.
+wire [1:0]selectorDg = {in_BUT1,in_BUT2}; 
+wire [3:0]Digit1 = (selectorDg == 2'b11) ? IRcomm[3:0] : (selectorDg == 2'b10) ? R3[3:0] : (selectorDg == 2'b01) ? R1[3:0] : 4'd0;
+wire [3:0]Digit2 = (selectorDg == 2'b11) ? IRcomm[7:4] : (selectorDg == 2'b10) ? R3[7:4] : (selectorDg == 2'b01) ? R1[7:4] : 4'd0;
+wire [3:0]Digit3 = (selectorDg == 2'b11) ? PC[3:0] : 		(selectorDg == 2'b10) ? R2[3:0] : (selectorDg == 2'b01) ? R0[3:0] : 4'd0;
+wire [3:0]Digit4 = (selectorDg == 2'b11) ? PC[7:4] : 		(selectorDg == 2'b10) ? R2[7:4] : (selectorDg == 2'b01) ? R0[7:4] : 4'd0;
+
+// Mux 4:4 -> 1:4
+assign Connect_MUX[3:0] = (row[3:0] == 4'b1110) ? Digit2 :
+									(row[3:0] == 4'b1101) ?  Digit1 :
+									 (row[3:0] == 4'b1011) ? Digit4 : Digit3;
+									 
+// Seven segment deshfrator
+assign DATA_OUT[10:4] = digits_rom[Connect_MUX][6:0];
+
+// BRAM section port A and B.
+RAM8 BRAM_progg( .data_a(8'b0000_0000), 
+							.data_b(8'b0000_0000), 
+								.addr_a({3'b000,PC}), 
+									.addr_b({11'b000_0000_0000}), 
+										.we_a(1'b0), 
+											.we_b(1'b0), 
+												.clk(clk), 
+												.q_a(mch_WORD), 
+													.q_b(mch_WORDB) );
+
+deviefive fvDev( .clk(clk), .CLK100Hz(is_dynamic), .CLKCPU(is_cnt), .CLK1kHz(pullunb) );
+
+UnBounceBB ubnc_a( .iclk(pullunb), .iin(BUT1), .iout(in_BUT1) );
+
+UnBounceBB ubnc_b( .iclk(pullunb), .iin(BUT2), .iout(in_BUT2) );
+
+	// Dynamic counter.
+	always @(posedge is_dynamic) begin
+			  row <= {row[2:0], row[3]};
+			  end
+
+wire twoByte = (mch_WORD[7:5] == 3'b010);
+	
+	// PC counter.
+	always @(posedge is_cnt) begin				
+
+		readyCPU <= 1'b1;		
+		
+		if(readyCPU) TTtrg <= ~TTtrg;
+
+		if( !((TTtrg == 0) && (twoByte == 0)) ) begin 
+		  PC[7:0] <= (pcwr) ? mch_WORD[7:0] : PC_adder[7:0];
+		end; 
+		
+		if(!TTtrg) begin		
+			IRcomm <= mch_WORD;			
+		end;
+	
+	   if(PC[7:0] == 8'b1000_0000) begin		
+		 pls <= 1'b0; // Ќе забывай что это три√√≈р ебена мать! ўелк!
+		end;
+		
+		if(DCWR[0]) begin 
+			R0 <= SourceC;
+		end;
+		
+		if(DCWR[1]) begin 
+			R1 <= SourceC;
+			end;
+			
+		if(DCWR[2]) begin 
+			R2 <= SourceC;
+		end;		
+
+		if(DCWR[3]) begin 
+			R3 <= SourceC;
+		end;	
+		
+	end
+	
+endmodule

@@ -1,0 +1,17 @@
+
+
+
+// Instantiate the module
+BRAM8Date instance_name (
+    .data_a(data_a), 
+    .data_b(data_b), 
+    .addr_a(addr_a), 
+    .addr_b(addr_b), 
+    .we_a(we_a), 
+    .we_b(we_b), 
+    .clk(clk), 
+    .q_a(q_a), 
+    .q_b(q_b)
+    );
+
+

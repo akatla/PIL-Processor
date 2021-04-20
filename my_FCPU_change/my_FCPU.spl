@@ -1,0 +1,10 @@
+[Inputs]
+clk
+BUT1
+BUT2
+[Outputs]
+=DATA_OUT[14:0]=
+[BiDir]
+[ATTRIBUTES]
+VeriModel my_FCPU
+
