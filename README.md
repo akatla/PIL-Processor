@@ -7,3 +7,4 @@ Sergey Letuchiy and Guru from Karataly!
 
 
 
+![](Images/images1.jpg)
