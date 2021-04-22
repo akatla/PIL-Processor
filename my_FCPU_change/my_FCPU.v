@@ -53,9 +53,10 @@ end
 
 // Registers section.
 reg [7:0]R0  = 8'b0000_0000;
-reg [7:0]R1  = 8'b0000_0000;
+reg [7:0]R1  = 8'b1010_1010;
 reg [7:0]R2  = 8'b0000_0000;
 reg [7:0]R3  = 8'b0000_0000;		
+reg [2:0]FLAG = 3'b000;
 reg [7:0]PC  = 8'b1111_1111; 		// Since the memory is synchronous we put FF in PC register.
 reg [7:0]IRcomm = 8'b1111_1111;
 reg pls = 1'b1;
@@ -79,8 +80,10 @@ wire [7:0]SRCA;
 wire [7:0]SRCB;
 wire [1:0]target = IRcomm[3:2];
 // ¬от в таком виде оно вроде как верно все делает!
+wire jmpZ = IRcomm[4]; // ”словный переход. 0101_xx1x ADDRR JMP.
 wire pcwr = (IRcomm[7:5] == 3'b010) & (IRcomm[1] == 1'b1);			// 010_x_xx1x 010_0_000
 wire [3:0]DCWR = {3'b000, {readyCPU & TTtrg & !pcwr}} << target;
+wire Z = !(muxSrc[0]|muxSrc[1]|muxSrc[2]|muxSrc[3]|muxSrc[4]|muxSrc[5]|muxSrc[6]|muxSrc[7]); // wire Z = !(|muxSrc[7:0]); din't work - make error!!!
 
 // Assign section.
 assign DATA_OUT[14:11] = ~DCWR[3:0]; // Now we can see how it works.
@@ -101,14 +104,14 @@ wire [7:0]stepen = SRCA ^ SRCB;
 // Commands package.
 // 8-ми разр€дный мультиплексор из 4-х проводов.
 wire [7:0]muxSrc[7:0] = {
-									stepen[7:0],	// 7	111
-									moddd[7:0],		// 6	110
-									devidd[7:0],	// 5	101
-									muller[7:0],	// 4	100								
-									suber[7:0],		// 3  011
-									mch_WORD[7:0],	// 2  010
-									adder[7:0],		// 1  001
-									SRCA[7:0]		// 0  000
+									stepen[7:0],	// 7	111 // del
+									moddd[7:0],		// 6	110 // del
+									devidd[7:0],	// 5	101 // del 
+									muller[7:0],	// 4	100 // del								
+									suber[7:0],		// 3  011 // del
+									mch_WORD[7:0],	// 2  010 // 
+									adder[7:0],		// 1  001 // 
+									SRCA[7:0]		// 0  000 // 
 								};
 								
 // IRcomm[7:6] индексы проводников [3:0] - 00 01 10 11. 
@@ -125,9 +128,9 @@ wire [3:0]Digit4 = (selectorDg == 2'b11) ? PC[7:4] : 		(selectorDg == 2'b10) ? R
 assign Connect_MUX[3:0] = (row[3:0] == 4'b1110) ? Digit2 :
 									(row[3:0] == 4'b1101) ?  Digit1 :
 									 (row[3:0] == 4'b1011) ? Digit4 : Digit3;
-									 
+								 
 // Seven segment deshfrator
-assign DATA_OUT[10:4] = digits_rom[Connect_MUX][6:0];
+assign DATA_OUT[10:4] = (selectorDg == 2'b00) ? R1[7:0] : digits_rom[Connect_MUX][6:0];
 
 // BRAM section port A and B.
 RAM8 BRAM_progg( .data_a(8'b0000_0000), 
@@ -152,6 +155,7 @@ UnBounceBB ubnc_b( .iclk(pullunb), .iin(BUT2), .iout(in_BUT2) );
 			  end
 
 wire twoByte = (mch_WORD[7:5] == 3'b010);
+wire jmpCondition = (jmpZ == 1'b0) ? pcwr : FLAG[2];
 	
 	// PC counter.
 	always @(posedge is_cnt) begin				
@@ -161,7 +165,7 @@ wire twoByte = (mch_WORD[7:5] == 3'b010);
 		if(readyCPU) TTtrg <= ~TTtrg;
 
 		if( !((TTtrg == 0) && (twoByte == 0)) ) begin 
-		  PC[7:0] <= (pcwr) ? mch_WORD[7:0] : PC_adder[7:0];
+		  PC[7:0] <= (jmpCondition) ? mch_WORD[7:0] : PC_adder[7:0];
 		end; 
 		
 		if(!TTtrg) begin		
@@ -171,6 +175,11 @@ wire twoByte = (mch_WORD[7:5] == 3'b010);
 	   if(PC[7:0] == 8'b1000_0000) begin		
 		 pls <= 1'b0; // Ќе забывай что это три√√≈р ебена мать! ўелк!
 		end;
+		
+		if(TTtrg & !(IRcomm[7:5] == 3'b000) & !pcwr) begin 
+			FLAG[2] <= Z;  
+		end;
+		// b0000_0011 b0100_0100 h42_03 JMP 03
 		
 		if(DCWR[0]) begin 
 			R0 <= SourceC;

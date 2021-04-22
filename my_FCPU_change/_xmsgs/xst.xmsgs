@@ -5,16 +5,19 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" Line 133: Result of <arg fmt="%d" index="1">8</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">7</arg>-bit target.
+</msg>
+
 <msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\BRAMBlock.v" Line 132: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">DOA</arg>&gt;. Formal port size is <arg fmt="%d" index="2">32</arg>-bit while actual signal size is <arg fmt="%d" index="1">8</arg>-bit.
 </msg>
 
 <msg type="warning" file="HDLCompiler" num="189" delta="old" >"D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\BRAMBlock.v" Line 135: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">DOB</arg>&gt;. Formal port size is <arg fmt="%d" index="2">32</arg>-bit while actual signal size is <arg fmt="%d" index="1">8</arg>-bit.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" Line 141: Assignment to <arg fmt="%s" index="1">mch_WORDB</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" Line 144: Assignment to <arg fmt="%s" index="1">mch_WORDB</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v</arg>&quot; line <arg fmt="%s" index="2">133</arg>: Output port &lt;<arg fmt="%s" index="3">q_b</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">BRAM_progg</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v</arg>&quot; line <arg fmt="%s" index="2">136</arg>: Output port &lt;<arg fmt="%s" index="3">q_b</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">BRAM_progg</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="2999" delta="old" >Signal &apos;<arg fmt="%s" index="1">digits_rom</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">my_FCPU</arg>&apos;, is tied to its initial value.
@@ -29,6 +32,12 @@ You should achieve better results by setting this init to <arg fmt="%i" index="3
 
 <msg type="warning" file="Xst" num="1426" delta="old" >The value init of the FF/Latch <arg fmt="%s" index="1">readyCPU</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">my_FCPU</arg>.
 You should achieve better results by setting this init to <arg fmt="%i" index="3">1</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">FLAG_2</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">my_FCPU</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">FLAG_2</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">my_FCPU</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="info" file="Xst" num="2169" delta="old" >HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
