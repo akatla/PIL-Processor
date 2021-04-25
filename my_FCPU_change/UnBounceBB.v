@@ -1,21 +1,21 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer:		Sergey Letuchiy
+// Company:			SergLetFPGA_Development
+// Engineer:		Akatla Arbuzov
 // 
-// Create Date:    12:05:11 26/11/2018 
-// Design Name: 	 Clock project
-// Module Name:    Clock_one 
-// Project Name:   Simple clock with voice alarm!
-// Target Devices: SPARTAN-6
-// Tool versions: 
-// Description:    Try to create clock and be cool and have a fun
-// working with FPGA! :)
-// Dependencies:   Alekx Sugonayev Kartaly
+// Create Date:    20:14:19 06/22/2017 
+// Design Name: 	 First programmable state machine (CPU) 
+// Module Name:    DeBouncer
+// Project Name: 	 FPSM_LSV
+// Target Devices: SPARTAN 6
+// Tool versions:  1.0
+// Description: 	 First attempt to create FPSM module
 //
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: 
+// Dependencies: 	 Alex S.
+//
+// Revision:		 2.1.0
+// Revision 0.04 - File Created
+// Additional Comments: none.
 //
 //////////////////////////////////////////////////////////////////////////////////
 module UnBounceBB(

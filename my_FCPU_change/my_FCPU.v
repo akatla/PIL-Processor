@@ -1,19 +1,19 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company:			SergEnt 
-// Engineer:		Letuchiy Sergey
+// Company:			SergLetFPGA_Development
+// Engineer:		Akatla Arbuzov
 // 
 // Create Date:    20:14:19 06/22/2017 
-// Design Name: 	 first CPU 
+// Design Name: 	 First programmable state machine (CPU) 
 // Module Name:    my_FCPU 
-// Project Name: 	 f_CPUModule
+// Project Name: 	 FPSM_LSV
 // Target Devices: SPARTAN 6
 // Tool versions:  1.0
-// Description: 	 First attempt to create ALU module
+// Description: 	 First attempt to create FPSM module
 //
-// Dependencies: 	 none
+// Dependencies: 	 Alex S.
 //
-// Revision:		 2.0.9
+// Revision:		 2.1.0
 // Revision 0.04 - File Created
 // Additional Comments: none.
 //
@@ -53,7 +53,7 @@ end
 
 // Registers section.
 reg [7:0]R0  = 8'b0000_0000;
-reg [7:0]R1  = 8'b1010_1010;
+reg [7:0]R1  = 8'b0000_0000;
 reg [7:0]R2  = 8'b0000_0000;
 reg [7:0]R3  = 8'b0000_0000;		
 reg [2:0]FLAG = 3'b000;
@@ -64,7 +64,6 @@ reg [3:0]row = 4'b1110;
 reg readyCPU = 1'b0;
 reg TTtrg = 1'b0;
 
-// Wire section.
 wire in_BUT1;
 wire in_BUT2;
 wire [3:0]Connect_MUX;
@@ -79,30 +78,29 @@ wire dpmgc;
 wire [7:0]SRCA;
 wire [7:0]SRCB;
 wire [1:0]target = IRcomm[3:2];
-// Вот в таком виде оно вроде как верно все делает!
-wire jmpZ = IRcomm[4]; // Условный переход. 0101_xx1x ADDRR JMP.
+wire jmpZ = (IRcomm[7:4] == 4'b0101); // Сonditional jump 0101_xx1x ADDRR JMP.
 wire pcwr = (IRcomm[7:5] == 3'b010) & (IRcomm[1] == 1'b1);			// 010_x_xx1x 010_0_000
 wire [3:0]DCWR = {3'b000, {readyCPU & TTtrg & !pcwr}} << target;
-wire Z = !(muxSrc[0]|muxSrc[1]|muxSrc[2]|muxSrc[3]|muxSrc[4]|muxSrc[5]|muxSrc[6]|muxSrc[7]); // wire Z = !(|muxSrc[7:0]); din't work - make error!!!
 
 // Assign section.
-assign DATA_OUT[14:11] = ~DCWR[3:0]; // Now we can see how it works.
+assign DATA_OUT[13:11] = ~DCWR[3:1]; // Now we can see how it works.
+assign DATA_OUT[14] 	= ~jmpZ;
+assign DATA_OUT[3:0] = row[3:0];
 assign PC_adder[7:0] = PC[7:0] + pls;
 
-assign DATA_OUT[3:0] = row[3:0];
 assign SRCA = (IRcomm[1:0] == 2'b00) ? R0 : (IRcomm[1:0] == 2'b01) ? R1 : (IRcomm[1:0] == 2'b10) ? R2 : R3;
 assign SRCB = (IRcomm[3:2] == 2'b00) ? R0 : (IRcomm[3:2] == 2'b01) ? R1 : (IRcomm[3:2] == 2'b10) ? R2 : R3;
 
-// List of commands.
+// List of FPSM commands.
 wire [7:0]adder = SRCA + SRCB;
-wire [7:0]suber = SRCB - SRCA;
+wire [7:0]suber = SRCB + (~SRCA + 1);
 wire [7:0]muller = SRCA * SRCB;
 wire [7:0]devidd = SRCB / SRCA;
 wire [7:0]moddd = SRCB % SRCA;
 wire [7:0]stepen = SRCA ^ SRCB;
 
 // Commands package.
-// 8-ми разрядный мультиплексор из 4-х проводов.
+// 8-bit 4-wire multiplexer.
 wire [7:0]muxSrc[7:0] = {
 									stepen[7:0],	// 7	111 // del
 									moddd[7:0],		// 6	110 // del
@@ -113,9 +111,11 @@ wire [7:0]muxSrc[7:0] = {
 									adder[7:0],		// 1  001 // 
 									SRCA[7:0]		// 0  000 // 
 								};
-								
-// IRcomm[7:6] индексы проводников [3:0] - 00 01 10 11. 
+
+// IRcomm[7:6] conductor indices [3:0] - 00 01 10 11. 
 wire [7:0]SourceC = muxSrc[IRcomm[7:5]][7:0]; 
+
+wire Z = !(|SourceC);
 
 // Mux - display.
 wire [1:0]selectorDg = {in_BUT1,in_BUT2}; 
@@ -129,8 +129,8 @@ assign Connect_MUX[3:0] = (row[3:0] == 4'b1110) ? Digit2 :
 									(row[3:0] == 4'b1101) ?  Digit1 :
 									 (row[3:0] == 4'b1011) ? Digit4 : Digit3;
 								 
-// Seven segment deshfrator
-assign DATA_OUT[10:4] = (selectorDg == 2'b00) ? R1[7:0] : digits_rom[Connect_MUX][6:0];
+// Seven segment decoder.
+assign DATA_OUT[10:4] = (selectorDg == 2'b00) ? R1[7:1] : digits_rom[Connect_MUX][6:0];
 
 // BRAM section port A and B.
 RAM8 BRAM_progg( .data_a(8'b0000_0000), 
@@ -156,7 +156,7 @@ UnBounceBB ubnc_b( .iclk(pullunb), .iin(BUT2), .iout(in_BUT2) );
 
 wire twoByte = (mch_WORD[7:5] == 3'b010);
 wire jmpCondition = (jmpZ == 1'b0) ? pcwr : FLAG[2];
-	
+
 	// PC counter.
 	always @(posedge is_cnt) begin				
 
@@ -173,13 +173,13 @@ wire jmpCondition = (jmpZ == 1'b0) ? pcwr : FLAG[2];
 		end;
 	
 	   if(PC[7:0] == 8'b1000_0000) begin		
-		 pls <= 1'b0; // Не забывай что это триГГЕр ебена мать! Щелк!
+		 pls <= 1'b0; // Don't forget that this is a MF trigger! Click!
 		end;
 		
-		if(TTtrg & !(IRcomm[7:5] == 3'b000) & !pcwr) begin 
+		if(TTtrg & !pcwr) begin 
 			FLAG[2] <= Z;  
 		end;
-		// b0000_0011 b0100_0100 h42_03 JMP 03
+		// b0000_0011 b0100_0100 h42_03 JMP 03 JMP Command.
 		
 		if(DCWR[0]) begin 
 			R0 <= SourceC;

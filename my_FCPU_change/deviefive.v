@@ -1,21 +1,21 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company:			SergLetFPGA_Development
+// Engineer:		Akatla Arbuzov
 // 
-// Create Date:    16:06:59 03/03/2021 
-// Design Name: 
-// Module Name:    deviefive 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
+// Create Date:    20:14:19 06/22/2017 
+// Design Name: 	 First programmable state machine (CPU) 
+// Module Name:    Clocker
+// Project Name: 	 FPSM_LSV
+// Target Devices: SPARTAN 6
+// Tool versions:  1.0
+// Description: 	 First attempt to create FPSM module
 //
-// Dependencies: 
+// Dependencies: 	 Alex S.
 //
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: 
+// Revision:		 2.1.0
+// Revision 0.04 - File Created
+// Additional Comments: none.
 //
 //////////////////////////////////////////////////////////////////////////////////
 module deviefive
@@ -33,7 +33,7 @@ output CLKCPU;
 
 reg [25:0]cnt = 26'd1;
 
-assign CLKCPU = !cnt[25];
+assign CLKCPU = !cnt[25]; // 25
 assign CLK1kHz = !cnt[14];
 assign CLK100Hz = cnt[17];
 
