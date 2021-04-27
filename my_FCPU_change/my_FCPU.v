@@ -164,9 +164,10 @@ wire jmpCondition = (jmpZ == 1'b0) ? pcwr : FLAG[2];
 		
 		if(readyCPU) TTtrg <= ~TTtrg;
 
-		if( !((TTtrg == 0) && (twoByte == 0)) ) begin 
+		/* !((TTtrg == 0) && (twoByte == 0))*/
+		if( (TTtrg == 1) | ((TTtrg == 0) && twoByte) ) begin 
 		  PC[7:0] <= (jmpCondition) ? mch_WORD[7:0] : PC_adder[7:0];
-		end; 
+		end;
 		
 		if(!TTtrg) begin		
 			IRcomm <= mch_WORD;			
