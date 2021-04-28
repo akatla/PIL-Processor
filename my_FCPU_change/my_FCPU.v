@@ -117,6 +117,7 @@ wire [7:0]SourceC = muxSrc[IRcomm[7:5]][7:0];
 
 wire Z = !(|SourceC);
 
+
 // Mux - display.
 wire [1:0]selectorDg = {in_BUT1,in_BUT2}; 
 wire [3:0]Digit1 = (selectorDg == 2'b11) ? IRcomm[3:0] : (selectorDg == 2'b10) ? R3[3:0] : (selectorDg == 2'b01) ? R1[3:0] : 4'd0;
@@ -164,7 +165,7 @@ wire jmpCondition = (jmpZ == 1'b0) ? pcwr : FLAG[2];
 		
 		if(readyCPU) TTtrg <= ~TTtrg;
 
-		/* !((TTtrg == 0) && (twoByte == 0))*/
+		/* !((TTtrg == 0) && (twoByte == 0)) Ircomm latch the last command! We need to fix this bug! */ 
 		if( (TTtrg == 1) | ((TTtrg == 0) && twoByte) ) begin 
 		  PC[7:0] <= (jmpCondition) ? mch_WORD[7:0] : PC_adder[7:0];
 		end;

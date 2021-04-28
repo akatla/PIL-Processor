@@ -3700,3 +3700,59 @@ map -intstyle ise -p xc6slx9-tqg144-3 -w -logic_opt off -ol high -t 1 -xt 0 -reg
 par -w -intstyle ise -ol high -mt off my_FCPU_map.ncd my_FCPU.ncd my_FCPU.pcf 
 trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml my_FCPU.twx my_FCPU.ncd -o my_FCPU.twr my_FCPU.pcf -ucf my_FCPU.ucf 
 bitgen -intstyle ise -f my_FCPU.ut my_FCPU.ncd 
+vhdtdtfi -lib work D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.v -lang verilog -prj my_FCPU -o my_FCPU.spl -module my_FCPU -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 my_FCPU.spl D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.sym 
+vhdtdtfi -lib work D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.v -lang verilog -prj my_FCPU -o my_FCPU.spl -module my_FCPU -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 my_FCPU.spl D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.sym 
+xst -intstyle ise -ifn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.xst" -ofn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc my_FCPU.ucf -p xc6slx9-tqg144-3 my_FCPU.ngc my_FCPU.ngd  
+map -intstyle ise -p xc6slx9-tqg144-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o my_FCPU_map.ncd my_FCPU.ngd my_FCPU.pcf 
+par -w -intstyle ise -ol high -mt off my_FCPU_map.ncd my_FCPU.ncd my_FCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml my_FCPU.twx my_FCPU.ncd -o my_FCPU.twr my_FCPU.pcf -ucf my_FCPU.ucf 
+bitgen -intstyle ise -f my_FCPU.ut my_FCPU.ncd 
+vhdtdtfi -lib work D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.v -lang verilog -prj my_FCPU -o my_FCPU.spl -module my_FCPU -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 my_FCPU.spl D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.sym 
+xst -intstyle ise -ifn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.xst" -ofn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc my_FCPU.ucf -p xc6slx9-tqg144-3 my_FCPU.ngc my_FCPU.ngd  
+map -intstyle ise -p xc6slx9-tqg144-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o my_FCPU_map.ncd my_FCPU.ngd my_FCPU.pcf 
+par -w -intstyle ise -ol high -mt off my_FCPU_map.ncd my_FCPU.ncd my_FCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml my_FCPU.twx my_FCPU.ncd -o my_FCPU.twr my_FCPU.pcf -ucf my_FCPU.ucf 
+bitgen -intstyle ise -f my_FCPU.ut my_FCPU.ncd 
+vhdtdtfi -lib work D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.v -lang verilog -prj my_FCPU -o my_FCPU.spl -module my_FCPU -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 my_FCPU.spl D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.sym 
+xst -intstyle ise -ifn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.xst" -ofn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc my_FCPU.ucf -p xc6slx9-tqg144-3 my_FCPU.ngc my_FCPU.ngd  
+map -intstyle ise -p xc6slx9-tqg144-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o my_FCPU_map.ncd my_FCPU.ngd my_FCPU.pcf 
+par -w -intstyle ise -ol high -mt off my_FCPU_map.ncd my_FCPU.ncd my_FCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml my_FCPU.twx my_FCPU.ncd -o my_FCPU.twr my_FCPU.pcf -ucf my_FCPU.ucf 
+bitgen -intstyle ise -f my_FCPU.ut my_FCPU.ncd 
+vhdtdtfi -lib work D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.v -lang verilog -prj my_FCPU -o my_FCPU.spl -module my_FCPU -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 my_FCPU.spl D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.sym 
+xst -intstyle ise -ifn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.xst" -ofn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc my_FCPU.ucf -p xc6slx9-tqg144-3 my_FCPU.ngc my_FCPU.ngd  
+map -intstyle ise -p xc6slx9-tqg144-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o my_FCPU_map.ncd my_FCPU.ngd my_FCPU.pcf 
+par -w -intstyle ise -ol high -mt off my_FCPU_map.ncd my_FCPU.ncd my_FCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml my_FCPU.twx my_FCPU.ncd -o my_FCPU.twr my_FCPU.pcf -ucf my_FCPU.ucf 
+bitgen -intstyle ise -f my_FCPU.ut my_FCPU.ncd 
+vhdtdtfi -lib work D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.v -lang verilog -prj my_FCPU -o my_FCPU.spl -module my_FCPU -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 my_FCPU.spl D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.sym 
+xst -intstyle ise -ifn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.xst" -ofn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc my_FCPU.ucf -p xc6slx9-tqg144-3 my_FCPU.ngc my_FCPU.ngd  
+map -intstyle ise -p xc6slx9-tqg144-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o my_FCPU_map.ncd my_FCPU.ngd my_FCPU.pcf 
+par -w -intstyle ise -ol high -mt off my_FCPU_map.ncd my_FCPU.ncd my_FCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml my_FCPU.twx my_FCPU.ncd -o my_FCPU.twr my_FCPU.pcf -ucf my_FCPU.ucf 
+bitgen -intstyle ise -f my_FCPU.ut my_FCPU.ncd 
+xst -intstyle ise -ifn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.xst" -ofn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc my_FCPU.ucf -p xc6slx9-tqg144-3 my_FCPU.ngc my_FCPU.ngd  
+map -intstyle ise -p xc6slx9-tqg144-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o my_FCPU_map.ncd my_FCPU.ngd my_FCPU.pcf 
+par -w -intstyle ise -ol high -mt off my_FCPU_map.ncd my_FCPU.ncd my_FCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml my_FCPU.twx my_FCPU.ncd -o my_FCPU.twr my_FCPU.pcf -ucf my_FCPU.ucf 
+bitgen -intstyle ise -f my_FCPU.ut my_FCPU.ncd 
+vhdtdtfi -lib work D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.v -lang verilog -prj my_FCPU -o my_FCPU.spl -module my_FCPU -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 my_FCPU.spl D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.sym 
+xst -intstyle ise -ifn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.xst" -ofn "D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/my_FCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc my_FCPU.ucf -p xc6slx9-tqg144-3 my_FCPU.ngc my_FCPU.ngd  
+map -intstyle ise -p xc6slx9-tqg144-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o my_FCPU_map.ncd my_FCPU.ngd my_FCPU.pcf 
+par -w -intstyle ise -ol high -mt off my_FCPU_map.ncd my_FCPU.ncd my_FCPU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml my_FCPU.twx my_FCPU.ncd -o my_FCPU.twr my_FCPU.pcf -ucf my_FCPU.ucf 
+bitgen -intstyle ise -f my_FCPU.ut my_FCPU.ncd 

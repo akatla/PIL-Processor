@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.48 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.49 secs
  
 --> Reading design: my_FCPU.prj
 
@@ -127,7 +127,7 @@ Elaborating module
 _16=256'b0,INIT_17=256'b0,INIT_18=256'b0,INIT_19=256'b0,INIT_1A=256'b0,INIT_1B=256'b0,INIT_1C=256'b0,INIT_1D=256'b0,INIT_1E=256'b0,INIT_1F=256'b0,INIT_20=256'b0,INIT_21=256'b0,INIT_22=256'b0,INIT_23=256'b0,INIT_24=256'b0,INIT_25=256'b0,INIT_26=256'b0,INIT_27=256'b0,INIT_28=256'b0,INIT_29=256'b0,INIT_2A=256'b0,INIT_2B=256'b0,INIT_2C=256'b0,INIT_2D=256'b0,INIT_2E=256'b0,INIT_2F=256'b0,INIT_30=256'b0,INIT_31=256'b0,INIT_32=256'b0,INIT_33=256'b0,INIT_34=256'b0,INIT_35=256'b0,INIT_36=256'b0,INIT_37=256'b0,INIT_38=256'b0,INIT_39=256'b0,INIT_3A=256'b0,INIT_3B=256'b0,INIT_3C=256'b0,INIT_3D=256'b0,INIT_3E=256'b0,INIT_3F=256'b0,INIT_A=36'b0,INIT_B=36'b0,INIT_FILE="NONE",RSTTYPE="SYNC",RST_PRIORITY_A="CE",RST_PRIORITY_B="CE",SIM_COLLISION_CHECK="ALL",SIM_DEVICE="SPARTAN6",SRVAL_A=36'b0,SRVAL_B=36'b0,WRITE_MODE_A="WRITE_FIRST",WRITE_MODE_B="WRITE_FIRST")>.
 WARNING:HDLCompiler:189 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\BRAMBlock.v" Line 132: Size mismatch in connection of port <DOA>. Formal port size is 32-bit while actual signal size is 8-bit.
 WARNING:HDLCompiler:189 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\BRAMBlock.v" Line 135: Size mismatch in connection of port <DOB>. Formal port size is 32-bit while actual signal size is 8-bit.
-WARNING:HDLCompiler:1127 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" Line 144: Assignment to mch_WORDB ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" Line 145: Assignment to mch_WORDB ignored, since the identifier is never used
 
 Elaborating module <deviefive>.
 
@@ -139,7 +139,7 @@ Elaborating module <UnBounceBB>.
 
 Synthesizing Unit <my_FCPU>.
     Related source file is "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v".
-INFO:Xst:3210 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" line 136: Output port <q_b> of the instance <BRAM_progg> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" line 137: Output port <q_b> of the instance <BRAM_progg> is unconnected or connected to loadless signal.
 WARNING:Xst:2999 - Signal 'digits_rom', unconnected in block 'my_FCPU', is tied to its initial value.
     Found 16x7-bit single-port Read Only RAM <Mram_digits_rom> for signal <digits_rom>.
     Found 1-bit register for signal <readyCPU>.
@@ -162,10 +162,10 @@ WARNING:Xst:2999 - Signal 'digits_rom', unconnected in block 'my_FCPU', is tied 
     Found 8-bit 8-to-1 multiplexer for signal <SourceC> created at line 116.
     Found 8-bit 4-to-1 multiplexer for signal <muxSrc<0>> created at line 104.
     Found 8-bit 4-to-1 multiplexer for signal <SRCB> created at line 79.
-    Found 4-bit 4-to-1 multiplexer for signal <Digit1> created at line 122.
-    Found 4-bit 4-to-1 multiplexer for signal <Digit2> created at line 123.
-    Found 4-bit 4-to-1 multiplexer for signal <Digit3> created at line 124.
-    Found 4-bit 4-to-1 multiplexer for signal <Digit4> created at line 125.
+    Found 4-bit 4-to-1 multiplexer for signal <Digit1> created at line 123.
+    Found 4-bit 4-to-1 multiplexer for signal <Digit2> created at line 124.
+    Found 4-bit 4-to-1 multiplexer for signal <Digit3> created at line 125.
+    Found 4-bit 4-to-1 multiplexer for signal <Digit4> created at line 126.
     Summary:
 	inferred   1 RAM(s).
 	inferred   1 Multiplier(s).
@@ -1511,12 +1511,12 @@ fvDev/cnt_9    |    1.950|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 11.31 secs
+Total REAL time to Xst completion: 17.00 secs
+Total CPU time to Xst completion: 16.08 secs
  
 --> 
 
-Total memory usage is 4503492 kilobytes
+Total memory usage is 4503520 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    6 (   0 filtered)
