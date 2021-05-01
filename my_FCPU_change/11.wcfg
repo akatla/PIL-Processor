@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/CPU_Bench_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="CPU_Bench" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="13" />
+   <wvobject fp_name="/CPU_Bench/iDATA_OUT" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">iDATA_OUT</obj_property>
+      <obj_property name="ObjectShortName">iDATA_OUT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/iclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">iclk</obj_property>
+      <obj_property name="ObjectShortName">iclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/Z" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">Z</obj_property>
+      <obj_property name="ObjectShortName">Z</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/S" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">S</obj_property>
+      <obj_property name="ObjectShortName">S</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/pcwr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pcwr</obj_property>
+      <obj_property name="ObjectShortName">pcwr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/jmpZ" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">jmpZ</obj_property>
+      <obj_property name="ObjectShortName">jmpZ</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/jmpS" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">jmpS</obj_property>
+      <obj_property name="ObjectShortName">jmpS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/suber" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">suber[7:0]</obj_property>
+      <obj_property name="ObjectShortName">suber[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/IRcomm" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">IRcomm[7:0]</obj_property>
+      <obj_property name="ObjectShortName">IRcomm[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/SourceC" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">SourceC[7:0]</obj_property>
+      <obj_property name="ObjectShortName">SourceC[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/PC" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PC[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/jmpCondition" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">jmpCondition</obj_property>
+      <obj_property name="ObjectShortName">jmpCondition</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/mch_WORD" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">mch_WORD[7:0]</obj_property>
+      <obj_property name="ObjectShortName">mch_WORD[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+</wave_config>

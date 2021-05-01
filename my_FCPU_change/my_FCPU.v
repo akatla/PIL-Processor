@@ -78,21 +78,27 @@ wire dpmgc;
 wire [7:0]SRCA;
 wire [7:0]SRCB;
 wire [1:0]target = IRcomm[3:2];
-wire jmpZ = (IRcomm[7:4] == 4'b0101); // Ñonditional jump 0101_xx1x ADDRR JMP.
-wire pcwr = (IRcomm[7:5] == 3'b010) & (IRcomm[1] == 1'b1);			// 010_x_xx1x 010_0_000
+
+wire pcwr = (IRcomm[7:5] == 3'b010) & (IRcomm[1] == 1'b1);								// jump 					010_x_xx1x				0100_0010 Hx 42 !!!
+wire jmpZ = (IRcomm[7:4] == 4'b0101) & (IRcomm[1] == 1'b1);								// Ñonditional jump	0101_xx1x ADDRR JMZ. 0101_0000 Hx 52 !!!
+wire jmpS = (IRcomm[7:3] == 5'b01011) & (IRcomm[1] == 1'b1); 							// Ñonditional jump	0101_1x1x ADDRR JMS. 0101_1010 Hx 5A !!!
+wire jmpC = (IRcomm[7:1] == 6'b0101111); 														// Ñonditional jump	0101_111x ADDRR JMC. 0101_1110 Hx 5E !!!
+
 wire [3:0]DCWR = {3'b000, {readyCPU & TTtrg & !pcwr}} << target;
 
 // Assign section.
 assign DATA_OUT[13:11] = ~DCWR[3:1]; // Now we can see how it works.
-assign DATA_OUT[14] 	= ~jmpZ;
+assign DATA_OUT[14] 	= ~jmpS;
 assign DATA_OUT[3:0] = row[3:0];
 assign PC_adder[7:0] = PC[7:0] + pls;
 
 assign SRCA = (IRcomm[1:0] == 2'b00) ? R0 : (IRcomm[1:0] == 2'b01) ? R1 : (IRcomm[1:0] == 2'b10) ? R2 : R3;
 assign SRCB = (IRcomm[3:2] == 2'b00) ? R0 : (IRcomm[3:2] == 2'b01) ? R1 : (IRcomm[3:2] == 2'b10) ? R2 : R3;
 
+
+
 // List of FPSM commands.
-wire [7:0]adder = SRCA + SRCB;
+wire [8:0]adder = SRCA + SRCB;
 wire [7:0]suber = SRCB + (~SRCA + 1);
 wire [7:0]muller = SRCA * SRCB;
 wire [7:0]devidd = SRCB / SRCA;
@@ -115,8 +121,10 @@ wire [7:0]muxSrc[7:0] = {
 // IRcomm[7:6] conductor indices [3:0] - 00 01 10 11. 
 wire [7:0]SourceC = muxSrc[IRcomm[7:5]][7:0]; 
 
+// List of flags
+wire C = adder[8];
 wire Z = !(|SourceC);
-
+wire S = SourceC[7];
 
 // Mux - display.
 wire [1:0]selectorDg = {in_BUT1,in_BUT2}; 
@@ -156,7 +164,7 @@ UnBounceBB ubnc_b( .iclk(pullunb), .iin(BUT2), .iout(in_BUT2) );
 			  end
 
 wire twoByte = (mch_WORD[7:5] == 3'b010);
-wire jmpCondition = (jmpZ == 1'b0) ? pcwr : FLAG[2];
+wire jmpCondition =  (jmpC == 1'b1) ? FLAG[0] : (jmpS == 1'b1) ? FLAG[1] : (jmpZ == 1'b1) ? FLAG[2] : pcwr;
 
 	// PC counter.
 	always @(posedge is_cnt) begin				
@@ -165,7 +173,6 @@ wire jmpCondition = (jmpZ == 1'b0) ? pcwr : FLAG[2];
 		
 		if(readyCPU) TTtrg <= ~TTtrg;
 
-		/* !((TTtrg == 0) && (twoByte == 0)) Ircomm latch the last command! We need to fix this bug! */ 
 		if( (TTtrg == 1) | ((TTtrg == 0) && twoByte) ) begin 
 		  PC[7:0] <= (jmpCondition) ? mch_WORD[7:0] : PC_adder[7:0];
 		end;
@@ -178,10 +185,12 @@ wire jmpCondition = (jmpZ == 1'b0) ? pcwr : FLAG[2];
 		 pls <= 1'b0; // Don't forget that this is a MF trigger! Click!
 		end;
 		
-		if(TTtrg & !pcwr) begin 
-			FLAG[2] <= Z;  
+		if(TTtrg & !pcwr) begin			
+			FLAG[2] <= Z;			
+			FLAG[1] <= S;
+			FLAG[0] <= C;
 		end;
-		// b0000_0011 b0100_0100 h42_03 JMP 03 JMP Command.
+		// b0000_0011 b0100_0100 h03_42 JMP 03 JMP Command.
 		
 		if(DCWR[0]) begin 
 			R0 <= SourceC;

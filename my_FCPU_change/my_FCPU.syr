@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.48 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.49 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: my_FCPU.prj
 
@@ -123,11 +123,11 @@ Elaborating module <my_FCPU>.
 Elaborating module <RAM8>.
 
 Elaborating module
-<RAMB16BWER(DATA_WIDTH_A=9,DATA_WIDTH_B=9,DOA_REG=0,DOB_REG=0,EN_RSTRAM_A="TRUE",EN_RSTRAM_B="TRUE",INITP_00=256'b0,INITP_01=256'b0,INITP_02=256'b0,INITP_03=256'b0,INITP_04=256'b0,INITP_05=256'b0,INITP_06=256'b0,INITP_07=256'b0,INIT_00=256'b01010000100001000100110000000110100100000000000000000000000000000000000000000000000110001010000011010110000001101001100000000000000001101001000,INIT_01=256'b0101000101000010000000000000000000000000000000000000000000000000000000000000000000000000,INIT_02=256'b0110011101000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,INIT_03=256'b010010000100000000000000000000000000000000000000000000000000000000000000000,INIT_04=256'b0,INIT_05=256'b0,INIT_06=256'b0,INIT_07=256'b0,INIT_08=256'b0,INIT_09=256'b0,INIT_0A=256'b0,INIT_0B=256'b0,INIT_0C=256'b0,INIT_0D=256'b0,INIT_0E=256'b0,INIT_0F=256'b0,INIT_10=256'b0,INIT_11=256'b0,INIT_12=256'b0,INIT_13=256'b0,INIT_14=256'b0,INIT_15=256'b0,INIT
+<RAMB16BWER(DATA_WIDTH_A=9,DATA_WIDTH_B=9,DOA_REG=0,DOB_REG=0,EN_RSTRAM_A="TRUE",EN_RSTRAM_B="TRUE",INITP_00=256'b0,INITP_01=256'b0,INITP_02=256'b0,INITP_03=256'b0,INITP_04=256'b0,INITP_05=256'b0,INITP_06=256'b0,INITP_07=256'b0,INIT_00=256'b01010000100001000100110000011110100100000000000000000000000000000000000000000000000110001011110001010111111111001001100000011110100100000000000,INIT_01=256'b0101000101000010000000000000000000000000000000000000000000000000000000000000000000000000,INIT_02=256'b0110011101000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000,INIT_03=256'b010010000100000000000000000000000000000000000000000000000000000000000000000,INIT_04=256'b0,INIT_05=256'b0,INIT_06=256'b0,INIT_07=256'b0,INIT_08=256'b0,INIT_09=256'b0,INIT_0A=256'b0,INIT_0B=256'b0,INIT_0C=256'b0,INIT_0D=256'b0,INIT_0E=256'b0,INIT_0F=256'b0,INIT_10=256'b0,INIT_11=256'b0,INIT_12=256'b0,INIT_13=256'b0,INIT_14=256'b0,INIT_15=256'b0,INIT
 _16=256'b0,INIT_17=256'b0,INIT_18=256'b0,INIT_19=256'b0,INIT_1A=256'b0,INIT_1B=256'b0,INIT_1C=256'b0,INIT_1D=256'b0,INIT_1E=256'b0,INIT_1F=256'b0,INIT_20=256'b0,INIT_21=256'b0,INIT_22=256'b0,INIT_23=256'b0,INIT_24=256'b0,INIT_25=256'b0,INIT_26=256'b0,INIT_27=256'b0,INIT_28=256'b0,INIT_29=256'b0,INIT_2A=256'b0,INIT_2B=256'b0,INIT_2C=256'b0,INIT_2D=256'b0,INIT_2E=256'b0,INIT_2F=256'b0,INIT_30=256'b0,INIT_31=256'b0,INIT_32=256'b0,INIT_33=256'b0,INIT_34=256'b0,INIT_35=256'b0,INIT_36=256'b0,INIT_37=256'b0,INIT_38=256'b0,INIT_39=256'b0,INIT_3A=256'b0,INIT_3B=256'b0,INIT_3C=256'b0,INIT_3D=256'b0,INIT_3E=256'b0,INIT_3F=256'b0,INIT_A=36'b0,INIT_B=36'b0,INIT_FILE="NONE",RSTTYPE="SYNC",RST_PRIORITY_A="CE",RST_PRIORITY_B="CE",SIM_COLLISION_CHECK="ALL",SIM_DEVICE="SPARTAN6",SRVAL_A=36'b0,SRVAL_B=36'b0,WRITE_MODE_A="WRITE_FIRST",WRITE_MODE_B="WRITE_FIRST")>.
-WARNING:HDLCompiler:189 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\BRAMBlock.v" Line 132: Size mismatch in connection of port <DOA>. Formal port size is 32-bit while actual signal size is 8-bit.
-WARNING:HDLCompiler:189 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\BRAMBlock.v" Line 135: Size mismatch in connection of port <DOB>. Formal port size is 32-bit while actual signal size is 8-bit.
-WARNING:HDLCompiler:1127 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" Line 145: Assignment to mch_WORDB ignored, since the identifier is never used
+WARNING:HDLCompiler:189 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\BRAMBlock.v" Line 134: Size mismatch in connection of port <DOA>. Formal port size is 32-bit while actual signal size is 8-bit.
+WARNING:HDLCompiler:189 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\BRAMBlock.v" Line 137: Size mismatch in connection of port <DOB>. Formal port size is 32-bit while actual signal size is 8-bit.
+WARNING:HDLCompiler:1127 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" Line 153: Assignment to mch_WORDB ignored, since the identifier is never used
 
 Elaborating module <deviefive>.
 
@@ -139,7 +139,7 @@ Elaborating module <UnBounceBB>.
 
 Synthesizing Unit <my_FCPU>.
     Related source file is "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v".
-INFO:Xst:3210 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" line 137: Output port <q_b> of the instance <BRAM_progg> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\my_FCPU.v" line 145: Output port <q_b> of the instance <BRAM_progg> is unconnected or connected to loadless signal.
 WARNING:Xst:2999 - Signal 'digits_rom', unconnected in block 'my_FCPU', is tied to its initial value.
     Found 16x7-bit single-port Read Only RAM <Mram_digits_rom> for signal <digits_rom>.
     Found 1-bit register for signal <readyCPU>.
@@ -147,31 +147,31 @@ WARNING:Xst:2999 - Signal 'digits_rom', unconnected in block 'my_FCPU', is tied 
     Found 8-bit register for signal <PC>.
     Found 8-bit register for signal <IRcomm>.
     Found 1-bit register for signal <pls>.
-    Found 1-bit register for signal <FLAG<2>>.
+    Found 3-bit register for signal <FLAG>.
     Found 8-bit register for signal <R0>.
     Found 8-bit register for signal <R1>.
     Found 8-bit register for signal <R2>.
     Found 8-bit register for signal <R3>.
     Found 4-bit register for signal <row>.
-    Found 8-bit adder for signal <PC_adder> created at line 89.
-    Found 8-bit adder for signal <muxSrc<1>> created at line 95.
-    Found 32-bit adder for signal <n0167> created at line 96.
-    Found 32-bit adder for signal <n0109> created at line 96.
-    Found 4-bit shifter logical left for signal <DCWR> created at line 83
-    Found 8x8-bit multiplier for signal <n0110> created at line 97.
-    Found 8-bit 8-to-1 multiplexer for signal <SourceC> created at line 116.
-    Found 8-bit 4-to-1 multiplexer for signal <muxSrc<0>> created at line 104.
+    Found 8-bit adder for signal <PC_adder> created at line 93.
+    Found 9-bit adder for signal <n0176> created at line 101.
+    Found 32-bit adder for signal <n0180> created at line 102.
+    Found 32-bit adder for signal <n0120> created at line 102.
+    Found 4-bit shifter logical left for signal <DCWR> created at line 87
+    Found 8x8-bit multiplier for signal <n0121> created at line 103.
+    Found 8-bit 8-to-1 multiplexer for signal <SourceC> created at line 122.
+    Found 8-bit 4-to-1 multiplexer for signal <muxSrc<0>> created at line 110.
     Found 8-bit 4-to-1 multiplexer for signal <SRCB> created at line 79.
-    Found 4-bit 4-to-1 multiplexer for signal <Digit1> created at line 123.
-    Found 4-bit 4-to-1 multiplexer for signal <Digit2> created at line 124.
-    Found 4-bit 4-to-1 multiplexer for signal <Digit3> created at line 125.
-    Found 4-bit 4-to-1 multiplexer for signal <Digit4> created at line 126.
+    Found 4-bit 4-to-1 multiplexer for signal <Digit1> created at line 131.
+    Found 4-bit 4-to-1 multiplexer for signal <Digit2> created at line 132.
+    Found 4-bit 4-to-1 multiplexer for signal <Digit3> created at line 133.
+    Found 4-bit 4-to-1 multiplexer for signal <Digit4> created at line 134.
     Summary:
 	inferred   1 RAM(s).
 	inferred   1 Multiplier(s).
 	inferred   4 Adder/Subtractor(s).
-	inferred  56 D-type flip-flop(s).
-	inferred  13 Multiplexer(s).
+	inferred  58 D-type flip-flop(s).
+	inferred  15 Multiplexer(s).
 	inferred   1 Combinational logic shifter(s).
 Unit <my_FCPU> synthesized.
 
@@ -307,11 +307,12 @@ Macro Statistics
  15-bit adder                                          : 4
  16-bit adder                                          : 4
  32-bit adder                                          : 2
- 8-bit adder                                           : 4
- 9-bit adder                                           : 4
+ 8-bit adder                                           : 3
+ 9-bit adder                                           : 5
 # Registers                                            : 41
- 1-bit register                                        : 32
+ 1-bit register                                        : 31
  10-bit register                                       : 2
+ 3-bit register                                        : 1
  4-bit register                                        : 1
  8-bit register                                        : 6
 # Comparators                                          : 18
@@ -324,8 +325,8 @@ Macro Statistics
  16-bit comparator lessequal                           : 2
  8-bit comparator lessequal                            : 2
  9-bit comparator lessequal                            : 2
-# Multiplexers                                         : 128
- 1-bit 2-to-1 multiplexer                              : 113
+# Multiplexers                                         : 130
+ 1-bit 2-to-1 multiplexer                              : 115
  4-bit 2-to-1 multiplexer                              : 3
  4-bit 4-to-1 multiplexer                              : 4
  7-bit 2-to-1 multiplexer                              : 1
@@ -370,12 +371,12 @@ Macro Statistics
 # Multipliers                                          : 1
  8x8-bit multiplier                                    : 1
 # Adders/Subtractors                                   : 19
- 8-bit adder                                           : 1
  8-bit adder carry in                                  : 18
+ 9-bit adder                                           : 1
 # Accumulators                                         : 1
  8-bit up loadable accumulator                         : 1
-# Registers                                            : 96
- Flip-Flops                                            : 96
+# Registers                                            : 98
+ Flip-Flops                                            : 98
 # Comparators                                          : 18
  10-bit comparator lessequal                           : 2
  11-bit comparator lessequal                           : 2
@@ -386,11 +387,11 @@ Macro Statistics
  16-bit comparator lessequal                           : 2
  8-bit comparator lessequal                            : 2
  9-bit comparator lessequal                            : 2
-# Multiplexers                                         : 133
- 1-bit 2-to-1 multiplexer                              : 113
- 1-bit 4-to-1 multiplexer                              : 8
+# Multiplexers                                         : 132
+ 1-bit 2-to-1 multiplexer                              : 115
+ 1-bit 4-to-1 multiplexer                              : 4
  4-bit 2-to-1 multiplexer                              : 3
- 4-bit 4-to-1 multiplexer                              : 2
+ 4-bit 4-to-1 multiplexer                              : 3
  7-bit 2-to-1 multiplexer                              : 1
  8-bit 2-to-1 multiplexer                              : 3
  8-bit 4-to-1 multiplexer                              : 2
@@ -429,8 +430,8 @@ Unit <my_FCPU> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 100
- Flip-Flops                                            : 100
+# Registers                                            : 102
+ Flip-Flops                                            : 102
 # Shift Registers                                      : 2
  2-bit shift register                                  : 2
 
@@ -455,21 +456,21 @@ Top Level Output File Name         : my_FCPU.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 559
+# BELS                             : 576
 #      GND                         : 1
 #      INV                         : 29
 #      LUT2                        : 39
-#      LUT3                        : 36
-#      LUT4                        : 39
-#      LUT5                        : 47
-#      LUT6                        : 244
-#      MUXCY                       : 50
-#      MUXF7                       : 15
+#      LUT3                        : 37
+#      LUT4                        : 36
+#      LUT5                        : 53
+#      LUT6                        : 253
+#      MUXCY                       : 51
+#      MUXF7                       : 18
 #      VCC                         : 1
 #      XORCY                       : 58
-# FlipFlops/Latches                : 102
+# FlipFlops/Latches                : 104
 #      FD                          : 48
-#      FDE                         : 52
+#      FDE                         : 54
 #      FDR                         : 2
 # RAMS                             : 1
 #      RAMB16BWER                  : 1
@@ -491,17 +492,17 @@ Selected Device : 6slx9tqg144-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             102  out of  11440     0%  
- Number of Slice LUTs:                  436  out of   5720     7%  
-    Number used as Logic:               434  out of   5720     7%  
+ Number of Slice Registers:             104  out of  11440     0%  
+ Number of Slice LUTs:                  449  out of   5720     7%  
+    Number used as Logic:               447  out of   5720     7%  
     Number used as Memory:                2  out of   1440     0%  
        Number used as SRL:                2
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    467
-   Number with an unused Flip Flop:     365  out of    467    78%  
-   Number with an unused LUT:            31  out of    467     6%  
-   Number of fully used LUT-FF pairs:    71  out of    467    15%  
+ Number of LUT Flip Flop pairs used:    483
+   Number with an unused Flip Flop:     379  out of    483    78%  
+   Number with an unused LUT:            34  out of    483     7%  
+   Number of fully used LUT-FF pairs:    70  out of    483    14%  
    Number of unique control sets:        39
 
 IO Utilization: 
@@ -535,8 +536,8 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
+fvDev/cnt_25                       | BUFG                   | 54    |
 fvDev/cnt_17                       | NONE(row_0)            | 5     |
-fvDev/cnt_25                       | BUFG                   | 52    |
 fvDev/cnt_24                       | NONE(fvDev/cnt_25)     | 1     |
 fvDev/cnt_23                       | NONE(fvDev/cnt_24)     | 1     |
 fvDev/cnt_22                       | NONE(fvDev/cnt_23)     | 1     |
@@ -573,7 +574,7 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 21.097ns (Maximum Frequency: 47.400MHz)
+   Minimum period: 21.141ns (Maximum Frequency: 47.301MHz)
    Minimum input arrival time before clock: 1.801ns
    Maximum output required time after clock: 8.723ns
    Maximum combinational path delay: No path found
@@ -598,7 +599,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_18 (fvDev/cnt_18)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[18]_INV_297_o1_INV_0 (fvDev/cnt[18]_INV_297_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[18]_INV_299_o1_INV_0 (fvDev/cnt[18]_INV_299_o)
      FD:D                      0.102          fvDev/cnt_18
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -606,45 +607,45 @@ Delay:               1.950ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'fvDev/cnt_25'
-  Clock period: 21.097ns (frequency: 47.400MHz)
-  Total number of paths / destination ports: 2785067564 / 93
+  Clock period: 21.141ns (frequency: 47.301MHz)
+  Total number of paths / destination ports: 3024729751 / 97
 -------------------------------------------------------------------------
-Delay:               21.097ns (Levels of Logic = 22)
-  Source:            IRcomm_3 (FF)
+Delay:               21.141ns (Levels of Logic = 22)
+  Source:            IRcomm_2 (FF)
   Destination:       FLAG_2 (FF)
   Source Clock:      fvDev/cnt_25 falling
   Destination Clock: fvDev/cnt_25 falling
 
-  Data Path: IRcomm_3 to FLAG_2
+  Data Path: IRcomm_2 to FLAG_2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             16   0.447   1.109  IRcomm_3 (IRcomm_3)
+     FDE:C->Q             17   0.447   1.132  IRcomm_2 (IRcomm_2)
      LUT6:I4->O           15   0.203   0.982  Mmux_SRCB81 (SRCB<7>)
-     LUT2:I1->O            2   0.205   0.721  muxSrc<5><7>_SW0 (N40)
+     LUT2:I1->O            2   0.205   0.721  muxSrc<5><7>_SW0 (N18)
      LUT6:I4->O            6   0.203   0.745  muxSrc<5><7> (muxSrc<5><7>)
-     LUT6:I5->O            4   0.205   0.684  SRCB[7]_SRCA[7]_div_25/a[7]_GND_3_o_MUX_99_o1 (SRCB[7]_SRCA[7]_div_25/a[7]_GND_3_o_MUX_99_o)
+     LUT6:I5->O            4   0.205   0.684  SRCB[7]_SRCA[7]_div_29/a[7]_GND_3_o_MUX_99_o1 (SRCB[7]_SRCA[7]_div_29/a[7]_GND_3_o_MUX_99_o)
      LUT6:I5->O           10   0.205   0.857  muxSrc<5><5> (muxSrc<5><5>)
-     LUT6:I5->O            7   0.205   0.878  muxSrc<5><4>1 (SRCB[7]_SRCA[7]_mod_26/BUS_0005_INV_221_o1)
-     LUT5:I3->O           11   0.203   0.883  muxSrc<5><4>11 (muxSrc<5><4>)
-     LUT6:I5->O           13   0.205   0.933  SRCB[7]_SRCA[7]_div_25/Mmux_a[0]_GND_3_o_MUX_156_o161 (SRCB[7]_SRCA[7]_div_25/a[6]_GND_3_o_MUX_150_o)
-     LUT6:I5->O            4   0.205   0.684  muxSrc<5><3>11_1 (muxSrc<5><3>11)
-     LUT6:I5->O            6   0.205   0.745  SRCB[7]_SRCA[7]_mod_26/Mmux_a[0]_GND_4_o_MUX_313_o151 (SRCB[7]_SRCA[7]_mod_26/a[5]_GND_4_o_MUX_308_o)
-     LUT3:I2->O            9   0.205   0.830  SRCB[7]_SRCA[7]_mod_26/BUS_0007_INV_246_o24_SW2 (N144)
-     LUT6:I5->O           14   0.205   0.958  SRCB[7]_SRCA[7]_mod_26/BUS_0007_INV_246_o24 (SRCB[7]_SRCA[7]_mod_26/BUS_0007_INV_246_o)
-     LUT5:I4->O            2   0.205   0.616  SRCB[7]_SRCA[7]_mod_26/Mmux_a[0]_GND_4_o_MUX_323_o131 (SRCB[7]_SRCA[7]_mod_26/a[3]_GND_4_o_MUX_320_o)
-     MUXCY:DI->O           1   0.145   0.000  SRCB[7]_SRCA[7]_mod_26/Madd_GND_4_o_b[7]_add_15_OUT_Madd_Madd_cy<3> (SRCB[7]_SRCA[7]_mod_26/Madd_GND_4_o_b[7]_add_15_OUT_Madd_Madd_cy<3>)
-     XORCY:CI->O           4   0.180   0.788  SRCB[7]_SRCA[7]_mod_26/Madd_GND_4_o_b[7]_add_15_OUT_Madd_Madd_xor<4> (SRCB[7]_SRCA[7]_mod_26/GND_4_o_b[7]_add_15_OUT<4>)
-     LUT4:I2->O            1   0.203   0.580  SRCB[7]_SRCA[7]_mod_26/BUS_0009_INV_267_o1_SW0_SW1 (N139)
-     LUT6:I5->O            3   0.205   0.755  SRCB[7]_SRCA[7]_mod_26/BUS_0009_INV_267_o1_SW0 (N35)
-     LUT6:I4->O            4   0.203   0.931  SRCB[7]_SRCA[7]_mod_26/BUS_0009_INV_267_o1_SW3 (N292)
+     LUT6:I5->O            7   0.205   0.878  SRCB[7]_SRCA[7]_div_29/a[7]_GND_3_o_MUX_125_o1 (SRCB[7]_SRCA[7]_div_29/a[7]_GND_3_o_MUX_125_o)
+     LUT5:I3->O           15   0.203   0.982  SRCB[7]_SRCA[7]_mod_30/BUS_0005_INV_223_o11 (muxSrc<5><4>)
+     LUT6:I5->O           11   0.205   0.883  SRCB[7]_SRCA[7]_div_29/Mmux_a[0]_GND_3_o_MUX_156_o161 (SRCB[7]_SRCA[7]_div_29/a[6]_GND_3_o_MUX_150_o)
+     LUT6:I5->O            4   0.205   0.684  SRCB[7]_SRCA[7]_mod_30/BUS_0006_INV_236_o11_1 (SRCB[7]_SRCA[7]_mod_30/BUS_0006_INV_236_o11)
+     LUT6:I5->O            6   0.205   0.745  SRCB[7]_SRCA[7]_mod_30/Mmux_a[0]_GND_4_o_MUX_313_o151 (SRCB[7]_SRCA[7]_mod_30/a[5]_GND_4_o_MUX_308_o)
+     LUT3:I2->O            8   0.205   0.803  SRCB[7]_SRCA[7]_mod_30/BUS_0007_INV_248_o24_SW2 (N121)
+     LUT6:I5->O           14   0.205   0.958  SRCB[7]_SRCA[7]_mod_30/BUS_0007_INV_248_o24 (SRCB[7]_SRCA[7]_mod_30/BUS_0007_INV_248_o)
+     LUT5:I4->O            2   0.205   0.616  SRCB[7]_SRCA[7]_mod_30/Mmux_a[0]_GND_4_o_MUX_323_o131 (SRCB[7]_SRCA[7]_mod_30/a[3]_GND_4_o_MUX_320_o)
+     MUXCY:DI->O           1   0.145   0.000  SRCB[7]_SRCA[7]_mod_30/Madd_GND_4_o_b[7]_add_15_OUT_Madd_Madd_cy<3> (SRCB[7]_SRCA[7]_mod_30/Madd_GND_4_o_b[7]_add_15_OUT_Madd_Madd_cy<3>)
+     XORCY:CI->O           4   0.180   0.788  SRCB[7]_SRCA[7]_mod_30/Madd_GND_4_o_b[7]_add_15_OUT_Madd_Madd_xor<4> (SRCB[7]_SRCA[7]_mod_30/GND_4_o_b[7]_add_15_OUT<4>)
+     LUT4:I2->O            1   0.203   0.580  SRCB[7]_SRCA[7]_mod_30/BUS_0009_INV_269_o1_SW0_SW1 (N116)
+     LUT6:I5->O            3   0.205   0.755  SRCB[7]_SRCA[7]_mod_30/BUS_0009_INV_269_o1_SW0 (N13)
+     LUT6:I4->O            4   0.203   0.931  SRCB[7]_SRCA[7]_mod_30/BUS_0009_INV_269_o1_SW3 (N274)
      LUT5:I1->O            1   0.203   0.000  Mmux_SourceC_32 (Mmux_SourceC_32)
      MUXF7:I1->O           5   0.140   0.943  Mmux_SourceC_2_f7_1 (SourceC<2>)
-     LUT3:I0->O            1   0.205   0.580  Z_SW0_SW0_SW0 (N344)
+     LUT3:I0->O            1   0.205   0.580  Z_SW0_SW0_SW0 (N324)
      LUT6:I5->O            1   0.205   0.000  Z (Z)
      FDE:D                     0.102          FLAG_2
     ----------------------------------------
-    Total                     21.097ns (4.897ns logic, 16.200ns route)
+    Total                     21.141ns (4.897ns logic, 16.244ns route)
                                        (23.2% logic, 76.8% route)
 
 =========================================================================
@@ -685,7 +686,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_24 (fvDev/cnt_24)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[24]_INV_303_o1_INV_0 (fvDev/cnt[24]_INV_303_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[24]_INV_305_o1_INV_0 (fvDev/cnt[24]_INV_305_o)
      FD:D                      0.102          fvDev/cnt_24
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -707,7 +708,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_23 (fvDev/cnt_23)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[23]_INV_302_o1_INV_0 (fvDev/cnt[23]_INV_302_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[23]_INV_304_o1_INV_0 (fvDev/cnt[23]_INV_304_o)
      FD:D                      0.102          fvDev/cnt_23
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -729,7 +730,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_22 (fvDev/cnt_22)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[22]_INV_301_o1_INV_0 (fvDev/cnt[22]_INV_301_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[22]_INV_303_o1_INV_0 (fvDev/cnt[22]_INV_303_o)
      FD:D                      0.102          fvDev/cnt_22
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -751,7 +752,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_21 (fvDev/cnt_21)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[21]_INV_300_o1_INV_0 (fvDev/cnt[21]_INV_300_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[21]_INV_302_o1_INV_0 (fvDev/cnt[21]_INV_302_o)
      FD:D                      0.102          fvDev/cnt_21
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -773,7 +774,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_20 (fvDev/cnt_20)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[20]_INV_299_o1_INV_0 (fvDev/cnt[20]_INV_299_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[20]_INV_301_o1_INV_0 (fvDev/cnt[20]_INV_301_o)
      FD:D                      0.102          fvDev/cnt_20
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -795,7 +796,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_19 (fvDev/cnt_19)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[19]_INV_298_o1_INV_0 (fvDev/cnt[19]_INV_298_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[19]_INV_300_o1_INV_0 (fvDev/cnt[19]_INV_300_o)
      FD:D                      0.102          fvDev/cnt_19
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -817,7 +818,7 @@ Delay:               2.078ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               6   0.447   0.744  fvDev/cnt_17 (fvDev/cnt_17)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[17]_INV_296_o1_INV_0 (fvDev/cnt[17]_INV_296_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[17]_INV_298_o1_INV_0 (fvDev/cnt[17]_INV_298_o)
      FD:D                      0.102          fvDev/cnt_17
     ----------------------------------------
     Total                      2.078ns (0.755ns logic, 1.323ns route)
@@ -839,7 +840,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_16 (fvDev/cnt_16)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[16]_INV_295_o1_INV_0 (fvDev/cnt[16]_INV_295_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[16]_INV_297_o1_INV_0 (fvDev/cnt[16]_INV_297_o)
      FD:D                      0.102          fvDev/cnt_16
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -861,7 +862,7 @@ Delay:               3.325ns (Levels of Logic = 2)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               3   0.447   0.879  ubnc_b/chain_6 (ubnc_b/chain_6)
-     LUT4:I1->O            1   0.205   0.580  ubnc_b/_n0013_SW0 (N46)
+     LUT4:I1->O            1   0.205   0.580  ubnc_b/_n0013_SW0 (N26)
      LUT6:I5->O            1   0.205   0.579  ubnc_b/_n0013 (ubnc_b/_n0013)
      FDR:R                     0.430          ubnc_b/deb
     ----------------------------------------
@@ -906,7 +907,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_13 (fvDev/cnt_13)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[13]_INV_292_o1_INV_0 (fvDev/cnt[13]_INV_292_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[13]_INV_294_o1_INV_0 (fvDev/cnt[13]_INV_294_o)
      FD:D                      0.102          fvDev/cnt_13
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -928,7 +929,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_12 (fvDev/cnt_12)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[12]_INV_291_o1_INV_0 (fvDev/cnt[12]_INV_291_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[12]_INV_293_o1_INV_0 (fvDev/cnt[12]_INV_293_o)
      FD:D                      0.102          fvDev/cnt_12
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -950,7 +951,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_11 (fvDev/cnt_11)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[11]_INV_290_o1_INV_0 (fvDev/cnt[11]_INV_290_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[11]_INV_292_o1_INV_0 (fvDev/cnt[11]_INV_292_o)
      FD:D                      0.102          fvDev/cnt_11
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -972,7 +973,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_10 (fvDev/cnt_10)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[10]_INV_289_o1_INV_0 (fvDev/cnt[10]_INV_289_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[10]_INV_291_o1_INV_0 (fvDev/cnt[10]_INV_291_o)
      FD:D                      0.102          fvDev/cnt_10
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -994,7 +995,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_9 (fvDev/cnt_9)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[9]_INV_288_o1_INV_0 (fvDev/cnt[9]_INV_288_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[9]_INV_290_o1_INV_0 (fvDev/cnt[9]_INV_290_o)
      FD:D                      0.102          fvDev/cnt_9
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -1016,7 +1017,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_8 (fvDev/cnt_8)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[8]_INV_287_o1_INV_0 (fvDev/cnt[8]_INV_287_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[8]_INV_289_o1_INV_0 (fvDev/cnt[8]_INV_289_o)
      FD:D                      0.102          fvDev/cnt_8
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -1038,7 +1039,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_7 (fvDev/cnt_7)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[7]_INV_286_o1_INV_0 (fvDev/cnt[7]_INV_286_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[7]_INV_288_o1_INV_0 (fvDev/cnt[7]_INV_288_o)
      FD:D                      0.102          fvDev/cnt_7
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -1060,7 +1061,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_6 (fvDev/cnt_6)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[6]_INV_285_o1_INV_0 (fvDev/cnt[6]_INV_285_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[6]_INV_287_o1_INV_0 (fvDev/cnt[6]_INV_287_o)
      FD:D                      0.102          fvDev/cnt_6
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -1082,7 +1083,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_5 (fvDev/cnt_5)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[5]_INV_284_o1_INV_0 (fvDev/cnt[5]_INV_284_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[5]_INV_286_o1_INV_0 (fvDev/cnt[5]_INV_286_o)
      FD:D                      0.102          fvDev/cnt_5
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -1104,7 +1105,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_4 (fvDev/cnt_4)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[4]_INV_283_o1_INV_0 (fvDev/cnt[4]_INV_283_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[4]_INV_285_o1_INV_0 (fvDev/cnt[4]_INV_285_o)
      FD:D                      0.102          fvDev/cnt_4
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -1126,7 +1127,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_3 (fvDev/cnt_3)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[3]_INV_282_o1_INV_0 (fvDev/cnt[3]_INV_282_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[3]_INV_284_o1_INV_0 (fvDev/cnt[3]_INV_284_o)
      FD:D                      0.102          fvDev/cnt_3
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -1148,7 +1149,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_2 (fvDev/cnt_2)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[2]_INV_281_o1_INV_0 (fvDev/cnt[2]_INV_281_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[2]_INV_283_o1_INV_0 (fvDev/cnt[2]_INV_283_o)
      FD:D                      0.102          fvDev/cnt_2
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -1170,7 +1171,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_1 (fvDev/cnt_1)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[1]_INV_280_o1_INV_0 (fvDev/cnt[1]_INV_280_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[1]_INV_282_o1_INV_0 (fvDev/cnt[1]_INV_282_o)
      FD:D                      0.102          fvDev/cnt_1
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -1192,7 +1193,7 @@ Delay:               1.950ns (Levels of Logic = 1)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               2   0.447   0.616  fvDev/cnt_0 (fvDev/cnt_0)
-     INV:I->O              1   0.206   0.579  fvDev/cnt[0]_INV_279_o1_INV_0 (fvDev/cnt[0]_INV_279_o)
+     INV:I->O              1   0.206   0.579  fvDev/cnt[0]_INV_281_o1_INV_0 (fvDev/cnt[0]_INV_281_o)
      FD:D                      0.102          fvDev/cnt_0
     ----------------------------------------
     Total                      1.950ns (0.755ns logic, 1.195ns route)
@@ -1219,7 +1220,7 @@ Offset:              1.801ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'fvDev/cnt_25'
-  Total number of paths / destination ports: 371 / 11
+  Total number of paths / destination ports: 373 / 11
 -------------------------------------------------------------------------
 Offset:              7.633ns (Levels of Logic = 4)
   Source:            IRcomm_5 (FF)
@@ -1233,8 +1234,8 @@ Offset:              7.633ns (Levels of Logic = 4)
      FDE:C->Q             37   0.447   1.727  IRcomm_5 (IRcomm_5)
      LUT6:I0->O            1   0.203   0.580  Mmux_Connect_MUX61 (Mmux_Connect_MUX6)
      LUT6:I5->O            7   0.205   1.118  Mmux_Connect_MUX65 (Connect_MUX<1>)
-     LUT6:I1->O            1   0.203   0.579  Mmux_DATA_OUT<10:4>11 (DATA_OUT_10_OBUF)
-     OBUF:I->O                 2.571          DATA_OUT_10_OBUF (DATA_OUT<10>)
+     LUT6:I1->O            1   0.203   0.579  Mmux_DATA_OUT<10:4>71 (DATA_OUT_9_OBUF)
+     OBUF:I->O                 2.571          DATA_OUT_9_OBUF (DATA_OUT<9>)
     ----------------------------------------
     Total                      7.633ns (3.629ns logic, 4.004ns route)
                                        (47.5% logic, 52.5% route)
@@ -1254,10 +1255,10 @@ Offset:              8.723ns (Levels of Logic = 5)
     ----------------------------------------  ------------
      FDR:C->Q             14   0.447   1.322  ubnc_a/deb (ubnc_a/deb)
      LUT6:I0->O            4   0.203   1.048  Mmux_Connect_MUX171 (Mmux_Connect_MUX17)
-     LUT6:I0->O            1   0.203   0.827  Mmux_Connect_MUX123 (Mmux_Connect_MUX125)
-     LUT6:I2->O            7   0.203   1.118  Mmux_Connect_MUX125 (Connect_MUX<3>)
-     LUT6:I1->O            1   0.203   0.579  Mmux_DATA_OUT<10:4>21 (DATA_OUT_4_OBUF)
-     OBUF:I->O                 2.571          DATA_OUT_4_OBUF (DATA_OUT<4>)
+     LUT6:I0->O            1   0.203   0.827  Mmux_Connect_MUX33 (Mmux_Connect_MUX32)
+     LUT6:I2->O            7   0.203   1.118  Mmux_Connect_MUX35 (Connect_MUX<0>)
+     LUT6:I1->O            1   0.203   0.579  Mmux_DATA_OUT<10:4>31 (DATA_OUT_5_OBUF)
+     OBUF:I->O                 2.571          DATA_OUT_5_OBUF (DATA_OUT<5>)
     ----------------------------------------
     Total                      8.723ns (3.830ns logic, 4.893ns route)
                                        (43.9% logic, 56.1% route)
@@ -1277,10 +1278,10 @@ Offset:              8.653ns (Levels of Logic = 5)
     ----------------------------------------  ------------
      FD:C->Q              16   0.447   1.252  row_3 (row_3)
      LUT6:I2->O            4   0.203   1.048  Mmux_Connect_MUX171 (Mmux_Connect_MUX17)
-     LUT6:I0->O            1   0.203   0.827  Mmux_Connect_MUX123 (Mmux_Connect_MUX125)
-     LUT6:I2->O            7   0.203   1.118  Mmux_Connect_MUX125 (Connect_MUX<3>)
-     LUT6:I1->O            1   0.203   0.579  Mmux_DATA_OUT<10:4>21 (DATA_OUT_4_OBUF)
-     OBUF:I->O                 2.571          DATA_OUT_4_OBUF (DATA_OUT<4>)
+     LUT6:I0->O            1   0.203   0.827  Mmux_Connect_MUX33 (Mmux_Connect_MUX32)
+     LUT6:I2->O            7   0.203   1.118  Mmux_Connect_MUX35 (Connect_MUX<0>)
+     LUT6:I1->O            1   0.203   0.579  Mmux_DATA_OUT<10:4>31 (DATA_OUT_5_OBUF)
+     OBUF:I->O                 2.571          DATA_OUT_5_OBUF (DATA_OUT<5>)
     ----------------------------------------
     Total                      8.653ns (3.830ns logic, 4.823ns route)
                                        (44.3% logic, 55.7% route)
@@ -1449,7 +1450,7 @@ Clock to Setup on destination clock fvDev/cnt_25
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
 clk            |         |         |    5.117|         |
-fvDev/cnt_25   |         |         |   21.097|         |
+fvDev/cnt_25   |         |         |   21.141|         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock fvDev/cnt_3
@@ -1511,12 +1512,12 @@ fvDev/cnt_9    |    1.950|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 17.00 secs
-Total CPU time to Xst completion: 16.08 secs
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 11.69 secs
  
 --> 
 
-Total memory usage is 4503520 kilobytes
+Total memory usage is 4504544 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    6 (   0 filtered)
