@@ -1,0 +1,2 @@
+vhdtdtfi -lib work D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/deviefive.v -lang verilog -prj my_FCPU -o deviefive.spl -module deviefive -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 deviefive.spl D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/deviefive.sym 

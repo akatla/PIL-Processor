@@ -79,50 +79,76 @@ wire [7:0]SRCA;
 wire [7:0]SRCB;
 wire [1:0]target = IRcomm[3:2];
 
-wire pcwr = (IRcomm[7:5] == 3'b010) & (IRcomm[1] == 1'b1);								// jump 					010_x_xx1x				0100_0010 Hx 42 !!!
-wire jmpZ = (IRcomm[7:4] == 4'b0101) & (IRcomm[1] == 1'b1);								// Ñonditional jump	0101_xx1x ADDRR JMZ. 0101_0000 Hx 52 !!!
-wire jmpS = (IRcomm[7:3] == 5'b01011) & (IRcomm[1] == 1'b1); 							// Ñonditional jump	0101_1x1x ADDRR JMS. 0101_1010 Hx 5A !!!
-wire jmpC = (IRcomm[7:1] == 6'b0101111); 														// Ñonditional jump	0101_111x ADDRR JMC. 0101_1110 Hx 5E !!!
+// JUMP SECTION.
+// ??? IRcomm[7:3] 
+// Decode all jumps commands.																//							010_ab_x1x																														 
+wire pcwr = (IRcomm[7:3] == 5'b010_00) & (IRcomm[1] == 1'b1);					// jump 					010_00_x1x ADDRR JMP	 42H			 
+wire jmpZ = (IRcomm[7:3] == 5'b010_10) & (IRcomm[1] == 1'b1);					// Ñonditional jump	010_10_x1x ADDRR JMZ. 52H
+wire jmpS = (IRcomm[7:3] == 5'b010_11) & (IRcomm[1] == 1'b1);					// Ñonditional jump	010_11_x1x ADDRR JMS. 5AH
+wire jmpC = (IRcomm[7:3] == 5'b010_01) & (IRcomm[1] == 1'b1);					// Ñonditional jump	010_01_x1x ADDRR JMC. 4AH
 
+// Main DECODER.
 wire [3:0]DCWR = {3'b000, {readyCPU & TTtrg & !pcwr}} << target;
 
-// Assign section.
-assign DATA_OUT[13:11] = ~DCWR[3:1]; // Now we can see how it works.
-assign DATA_OUT[14] 	= ~jmpS;
-assign DATA_OUT[3:0] = row[3:0];
-assign PC_adder[7:0] = PC[7:0] + pls;
+// OutPut indicators.
+assign DATA_OUT[14:11] = {S,Z,C,1'b1}; // ~DCWR[3:1]; // Now we can see how flags regiters doing his work.
+assign DATA_OUT[3:0] = 	row[3:0];
 
+// PC increment. 
+assign PC_adder[7:0] = 	PC[7:0] + pls;
+
+// Source A Source B.
 assign SRCA = (IRcomm[1:0] == 2'b00) ? R0 : (IRcomm[1:0] == 2'b01) ? R1 : (IRcomm[1:0] == 2'b10) ? R2 : R3;
 assign SRCB = (IRcomm[3:2] == 2'b00) ? R0 : (IRcomm[3:2] == 2'b01) ? R1 : (IRcomm[3:2] == 2'b10) ? R2 : R3;
-
-
 
 // List of FPSM commands.
 wire [8:0]adder = SRCA + SRCB;
 wire [7:0]suber = SRCB + (~SRCA + 1);
 wire [7:0]muller = SRCA * SRCB;
-wire [7:0]devidd = SRCB / SRCA;
-wire [7:0]moddd = SRCB % SRCA;
-wire [7:0]stepen = SRCA ^ SRCB;
+wire [8:0]shifright = SRCA >> 1'b1;
+wire [8:0]shifleft = SRCA << 1'b1;
 
+// LOAD STORE SECTION A.
+// Store and Load from/to mempry.
+//  LD RD,[RA] 101_0_ddaa
+//  ST [RA],RS 101_1_aass
+// wire load_store = (IRcomm[7:5] == 3'b101);   // ????
+wire load_store = (IRcomm[7:4] == 3'b101_0);
+wire save_store = (IRcomm[7:4] == 4'b101_1);
+wire [1:0]RA = (IRcomm[7:4] == 4'b101_1) ? IRcomm[3:2] : IRcomm[1:0];
+
+
+// MAIN COMMANDS MUX.
 // Commands package.
 // 8-bit 4-wire multiplexer.
-wire [7:0]muxSrc[7:0] = {
-									stepen[7:0],	// 7	111 // del
-									moddd[7:0],		// 6	110 // del
-									devidd[7:0],	// 5	101 // del 
-									muller[7:0],	// 4	100 // del								
-									suber[7:0],		// 3  011 // del
-									mch_WORD[7:0],	// 2  010 // 
-									adder[7:0],		// 1  001 // 
-									SRCA[7:0]		// 0  000 // 
+wire [7:0]muxSrc[7:0] = {							//		765 bits							
+									shifleft[7:0],		// 7	111 // shifleft  	111_x_ddxx  - 
+									shifright[8:1],	// 6	110 // shifright	110_x_ddxx
+									mch_WORD[7:0],		// 5	101 // memory		101_S_(S = 0)ddaa (S = 1)aass  LD RD,[RA] ST [RA],RS
+									muller[7:0],		// 4	100 // mul			100_x_ddss							
+									suber[7:0],			// 3  011 // sub			011_x_ddss
+									mch_WORD[7:0],		// 2  010 // jmp			010_ab_x1x	b0000_0011 b0100_0100 h03_42 JMP 03 JMP Command.
+									adder[7:0],			// 1  001 // add			001_x_ddss
+									SRCA[7:0]			// 0  000 // mov			000_x_ddss
 								};
 
-// IRcomm[7:6] conductor indices [3:0] - 00 01 10 11. 
+// IRcomm[7:5] conductor indices [2:0] - 00 01 10 11. 
 wire [7:0]SourceC = muxSrc[IRcomm[7:5]][7:0]; 
 
+// Carry MUX.
+wire [7:0]carryMux = 	{
+									shifleft[8],	
+									shifright[0],	
+									FLAG[0],			
+									FLAG[0],			
+									FLAG[0],			
+									FLAG[0],
+									adder[8],		
+									FLAG[0]		
+								};
+// FLAGS SECTION.
 // List of flags
-wire C = adder[8];
+wire C =  carryMux[IRcomm[7:5]];
 wire Z = !(|SourceC);
 wire S = SourceC[7];
 
@@ -141,12 +167,16 @@ assign Connect_MUX[3:0] = (row[3:0] == 4'b1110) ? Digit2 :
 // Seven segment decoder.
 assign DATA_OUT[10:4] = (selectorDg == 2'b00) ? R1[7:1] : digits_rom[Connect_MUX][6:0];
 
+// LOAD STORE SECTION B.
+wire [7:0]RFile[3:0] = {R3,R2,R1,R0};
+wire [7:0]adrr_ram = (load_store == 0) ? PC : RFile[RA][7:0];
+
 // BRAM section port A and B.
-RAM8 BRAM_progg( .data_a(8'b0000_0000), 
+RAM8 BRAM_progg( .data_a(SRCA), // From R0,R1,R2,R3 
 							.data_b(8'b0000_0000), 
-								.addr_a({3'b000,PC}), 
+								.addr_a({3'b000,adrr_ram}),  
 									.addr_b({11'b000_0000_0000}), 
-										.we_a(1'b0), 
+										.we_a(save_store), // Strobe
 											.we_b(1'b0), 
 												.clk(clk), 
 												.q_a(mch_WORD), 
@@ -162,8 +192,9 @@ UnBounceBB ubnc_b( .iclk(pullunb), .iin(BUT2), .iout(in_BUT2) );
 	always @(posedge is_dynamic) begin
 			  row <= {row[2:0], row[3]};
 			  end
-
+// TWO or ONE BYTE.
 wire twoByte = (mch_WORD[7:5] == 3'b010);
+// JUMP MAIN MUX.
 wire jmpCondition =  (jmpC == 1'b1) ? FLAG[0] : (jmpS == 1'b1) ? FLAG[1] : (jmpZ == 1'b1) ? FLAG[2] : pcwr;
 
 	// PC counter.
@@ -177,7 +208,7 @@ wire jmpCondition =  (jmpC == 1'b1) ? FLAG[0] : (jmpS == 1'b1) ? FLAG[1] : (jmpZ
 		  PC[7:0] <= (jmpCondition) ? mch_WORD[7:0] : PC_adder[7:0];
 		end;
 		
-		if(!TTtrg) begin		
+		if(!TTtrg) begin	// second	
 			IRcomm <= mch_WORD;			
 		end;
 	

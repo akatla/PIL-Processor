@@ -1,0 +1,2 @@
+vhdtdtfi -lib work D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/UnBounceBB.v -lang verilog -prj my_FCPU -o UnBounceBB.spl -module UnBounceBB -template D:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan6 UnBounceBB.spl D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/UnBounceBB.sym 

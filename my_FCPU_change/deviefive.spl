@@ -1,0 +1,10 @@
+[Inputs]
+clk
+[Outputs]
+CLK1kHz
+CLK100Hz
+CLKCPU
+[BiDir]
+[ATTRIBUTES]
+VeriModel deviefive
+

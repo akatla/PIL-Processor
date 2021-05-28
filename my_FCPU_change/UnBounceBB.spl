@@ -1,0 +1,9 @@
+[Inputs]
+iclk
+iin
+[Outputs]
+iout
+[BiDir]
+[ATTRIBUTES]
+VeriModel UnBounceBB
+
