@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WindowsFormsApplication1.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="pptt" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\SUGONAYEV_Infa\000_START_2021\000000_PIL\Commands1.txt</Value>
+    </Setting>
+    <Setting Name="pptttw" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\SUGONAYEV_Infa\000_START_2021\000000_PIL\outbram.o</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
