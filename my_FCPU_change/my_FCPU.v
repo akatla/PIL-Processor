@@ -13,7 +13,7 @@
 //
 // Dependencies: 	 Alex S.
 //
-// Revision:		 2.1.0
+// Revision:		 2.2.2
 // Revision 0.04 - File Created
 // Additional Comments: none.
 //
@@ -24,8 +24,9 @@ module my_FCPU
 				BUT1,
 				BUT2,
 				DATA_OUT
-			);
-			input	 clk;
+			);			
+
+			input	clk;
 			input	BUT1;
 			input BUT2;			
 			output [14:0]DATA_OUT;
@@ -51,6 +52,7 @@ initial begin
 			digits_rom[15] = 7'b1000111; 	// F
 end
 
+
 // Registers section.
 reg [7:0]R0  = 8'b0000_0000;
 reg [7:0]R1  = 8'b0000_0000;
@@ -58,7 +60,7 @@ reg [7:0]R2  = 8'b0000_0000;
 reg [7:0]R3  = 8'b0000_0000;		
 reg [2:0]FLAG = 3'b000;
 reg [7:0]PC  = 8'b1111_1111; 		// Since the memory is synchronous we put FF in PC register.
-reg [7:0]IRcomm = 8'b1111_1111;
+reg [7:0]IRcomm = 8'b0000_0000;
 reg pls = 1'b1;
 reg [3:0]row = 4'b1110;
 reg readyCPU = 1'b0;
@@ -87,8 +89,8 @@ wire jmpZ = (IRcomm[7:3] == 5'b010_10) & (IRcomm[1] == 1'b1);					// Ñonditional
 wire jmpS = (IRcomm[7:3] == 5'b010_11) & (IRcomm[1] == 1'b1);					// Ñonditional jump	010_11_x1x ADDRR JMS. 5AH
 wire jmpC = (IRcomm[7:3] == 5'b010_01) & (IRcomm[1] == 1'b1);					// Ñonditional jump	010_01_x1x ADDRR JMC. 4AH
 
-// Main DECODER.
-wire [3:0]DCWR = {3'b000, {readyCPU & TTtrg & !pcwr}} << target;
+// Main DECODER.  
+wire [3:0]DCWR = {3'b000, {!save_store & readyCPU & TTtrg & !pcwr}} << target; // & no write RAM save store.
 
 // OutPut indicators.
 assign DATA_OUT[14:11] = {S,Z,C,1'b1}; // ~DCWR[3:1]; // Now we can see how flags regiters doing his work.
@@ -113,8 +115,9 @@ wire [8:0]shifleft = SRCA << 1'b1;
 //  LD RD,[RA] 101_0_ddaa
 //  ST [RA],RS 101_1_aass
 // wire load_store = (IRcomm[7:5] == 3'b101);   // ????
-wire load_store = (IRcomm[7:4] == 3'b101_0);
-wire save_store = (IRcomm[7:4] == 4'b101_1);
+wire load_store = TTtrg & (IRcomm[7:4] == 4'b101_0);
+wire save_store = TTtrg & (IRcomm[7:4] == 4'b101_1);
+wire addrfromreg = TTtrg & (load_store | save_store);
 wire [1:0]RA = (IRcomm[7:4] == 4'b101_1) ? IRcomm[3:2] : IRcomm[1:0];
 
 
@@ -122,14 +125,14 @@ wire [1:0]RA = (IRcomm[7:4] == 4'b101_1) ? IRcomm[3:2] : IRcomm[1:0];
 // Commands package.
 // 8-bit 4-wire multiplexer.
 wire [7:0]muxSrc[7:0] = {							//		765 bits							
-									shifleft[7:0],		// 7	111 // shifleft  	111_x_ddxx  - 
-									shifright[8:1],	// 6	110 // shifright	110_x_ddxx
-									mch_WORD[7:0],		// 5	101 // memory		101_S_(S = 0)ddaa (S = 1)aass  LD RD,[RA] ST [RA],RS
-									muller[7:0],		// 4	100 // mul			100_x_ddss							
-									suber[7:0],			// 3  011 // sub			011_x_ddss
-									mch_WORD[7:0],		// 2  010 // jmp			010_ab_x1x	b0000_0011 b0100_0100 h03_42 JMP 03 JMP Command.
-									adder[7:0],			// 1  001 // add			001_x_ddss
-									SRCA[7:0]			// 0  000 // mov			000_x_ddss
+									shifleft[7:0],															// 7	111 // shifleft  	111_x_ddxx  - 
+									shifright[8:1],														// 6	110 // shifright	110_x_ddxx
+									load_store == 1'b0 ? mch_WORD[7:0] : mch_WORDB[7:0],		// 5	101 // memory		101_S_(S = 0)ddaa (S = 1)aass  LD RD,[RA] ST [RA],RS
+									muller[7:0],															// 4	100 // mul			100_x_ddss							
+									suber[7:0],																// 3  011 // sub			011_x_ddss
+									mch_WORD[7:0],															// 2  010 // jmp			010_ab_x1x	b0000_0011 b0100_0100 h03_42 JMP 03 JMP Command.
+									adder[7:0],																// 1  001 // add			001_x_ddss
+									SRCA[7:0]																// 0  000 // mov			000_x_ddss
 								};
 
 // IRcomm[7:5] conductor indices [2:0] - 00 01 10 11. 
@@ -146,6 +149,7 @@ wire [7:0]carryMux = 	{
 									adder[8],		
 									FLAG[0]		
 								};
+
 // FLAGS SECTION.
 // List of flags
 wire C =  carryMux[IRcomm[7:5]];
@@ -169,16 +173,16 @@ assign DATA_OUT[10:4] = (selectorDg == 2'b00) ? R1[7:1] : digits_rom[Connect_MUX
 
 // LOAD STORE SECTION B.
 wire [7:0]RFile[3:0] = {R3,R2,R1,R0};
-wire [7:0]adrr_ram = (load_store == 0) ? PC : RFile[RA][7:0];
+// wire [7:0]adrr_ram = PC;
 
 // BRAM section port A and B.
-RAM8 BRAM_progg( .data_a(SRCA), // From R0,R1,R2,R3 
-							.data_b(8'b0000_0000), 
-								.addr_a({3'b000,adrr_ram}),  
-									.addr_b({11'b000_0000_0000}), 
-										.we_a(save_store), // Strobe
-											.we_b(1'b0), 
-												.clk(clk), 
+RAM8 BRAM_progg( .data_a(8'b0000_0000),
+							.data_b(SRCA), 
+								.addr_a({3'b000,PC[7:0]}),  
+									.addr_b({3'b000,RFile[RA][7:0]}),
+										.we_a(1'b0),
+											.we_b(save_store),  // Strobe
+												.clk(is_cnt), 
 												.q_a(mch_WORD), 
 													.q_b(mch_WORDB) );
 
@@ -192,6 +196,7 @@ UnBounceBB ubnc_b( .iclk(pullunb), .iin(BUT2), .iout(in_BUT2) );
 	always @(posedge is_dynamic) begin
 			  row <= {row[2:0], row[3]};
 			  end
+
 // TWO or ONE BYTE.
 wire twoByte = (mch_WORD[7:5] == 3'b010);
 // JUMP MAIN MUX.
@@ -203,20 +208,39 @@ wire jmpCondition =  (jmpC == 1'b1) ? FLAG[0] : (jmpS == 1'b1) ? FLAG[1] : (jmpZ
 		readyCPU <= 1'b1;		
 		
 		if(readyCPU) TTtrg <= ~TTtrg;
+		
+		// Ready
+		// TTtrg twoByte readyCPU F
+		//    1		0			0      not write PC.
+		//    1     1        0		 not write PC.
+		//    0     0        0		 not write PC.
+		//    0     1        0		 not write PC.
+		
+		//    1     0        1	  0 T0, one byte. PC = PC + 1
+		//    1     1        1	  1 T0, two byte. PC = PC+1
+		//    0     0        1	  0 T1, one byte. PC same.
+		//    0     1        1	  1 T1, two byte. PC = PC + 1
+		
+		// ((TTtrg == 1) | ((TTtrg == 0) && twoByte))		
+		//    1     0        1	  1 T0, one byte. PC = PC + 1
+		//    1     1        1	  1 T0, two byte. PC = PC + 1
+		//    0     0        1	  0 T1, one byte. PC same.
+		//    0     1        1	  1 T1, two byte. PC = PC + 1
 
-		if( (TTtrg == 1) | ((TTtrg == 0) && twoByte) ) begin 
+		if( ((TTtrg == 1) | ((TTtrg == 0) && twoByte)) && readyCPU ) begin
 		  PC[7:0] <= (jmpCondition) ? mch_WORD[7:0] : PC_adder[7:0];
 		end;
 		
-		if(!TTtrg) begin	// second	
+		// Ready
+		if(!TTtrg && readyCPU) begin	// second	
 			IRcomm <= mch_WORD;			
 		end;
 	
 	   if(PC[7:0] == 8'b1000_0000) begin		
 		 pls <= 1'b0; // Don't forget that this is a MF trigger! Click!
 		end;
-		
-		if(TTtrg & !pcwr) begin			
+								// Ready
+		if(TTtrg & !pcwr & readyCPU) begin			
 			FLAG[2] <= Z;			
 			FLAG[1] <= S;
 			FLAG[0] <= C;

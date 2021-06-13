@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/CPU_Bench_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="CPU_Bench" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="21" />
+   <wvobject fp_name="/CPU_Bench/iDATA_OUT" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">iDATA_OUT</obj_property>
+      <obj_property name="ObjectShortName">iDATA_OUT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/is_cnt" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">is_cnt</obj_property>
+      <obj_property name="ObjectShortName">is_cnt</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#00ffff</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/PC" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PC[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/PC_adder" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC_adder[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_adder[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/mch_WORD" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">mch_WORD[7:0]</obj_property>
+      <obj_property name="ObjectShortName">mch_WORD[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/IRcomm" type="array" db_ref_id="1">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">IRcomm[7:0]</obj_property>
+      <obj_property name="ObjectShortName">IRcomm[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="label">IRcomm[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/mch_WORDB" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">mch_WORDB[7:0]</obj_property>
+      <obj_property name="ObjectShortName">mch_WORDB[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/save_store" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">save_store</obj_property>
+      <obj_property name="ObjectShortName">save_store</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/load_store" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">load_store</obj_property>
+      <obj_property name="ObjectShortName">load_store</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/addrfromreg" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">addrfromreg</obj_property>
+      <obj_property name="ObjectShortName">addrfromreg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/RA" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">RA[1:0]</obj_property>
+      <obj_property name="ObjectShortName">RA[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/R0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">R0[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/R1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">R1[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/R2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R2[7:0]</obj_property>
+      <obj_property name="ObjectShortName">R2[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/R3" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R3[7:0]</obj_property>
+      <obj_property name="ObjectShortName">R3[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/jmpCondition" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">jmpCondition</obj_property>
+      <obj_property name="ObjectShortName">jmpCondition</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/FLAG" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">FLAG[2:0]</obj_property>
+      <obj_property name="ObjectShortName">FLAG[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/pcwr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pcwr</obj_property>
+      <obj_property name="ObjectShortName">pcwr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/TTtrg" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">TTtrg</obj_property>
+      <obj_property name="ObjectShortName">TTtrg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/twoByte" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">twoByte</obj_property>
+      <obj_property name="ObjectShortName">twoByte</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CPU_Bench/uut/SRCA" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">SRCA[7:0]</obj_property>
+      <obj_property name="ObjectShortName">SRCA[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+</wave_config>

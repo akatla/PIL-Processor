@@ -1,9 +1,8 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri May 28 17:53:36 2021
+// Written by: Map P.20131013 on Sun Jun 13 18:18:25 2021
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "BUT2" LOCATE = SITE "P16" LEVEL 1;
 COMP "clk" LOCATE = SITE "P56" LEVEL 1;
 COMP "DATA_OUT<10>" LOCATE = SITE "P80" LEVEL 1;
 COMP "DATA_OUT<11>" LOCATE = SITE "P97" LEVEL 1;
@@ -21,5 +20,6 @@ COMP "DATA_OUT<7>" LOCATE = SITE "P82" LEVEL 1;
 COMP "DATA_OUT<8>" LOCATE = SITE "P83" LEVEL 1;
 COMP "DATA_OUT<9>" LOCATE = SITE "P79" LEVEL 1;
 COMP "BUT1" LOCATE = SITE "P17" LEVEL 1;
+COMP "BUT2" LOCATE = SITE "P16" LEVEL 1;
 SCHEMATIC END;
 

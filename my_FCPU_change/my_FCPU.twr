@@ -32,25 +32,16 @@ Data Sheet report:
 -----------------
 All values displayed in nanoseconds (ns)
 
-Clock clk to Pad
-------------+-----------------+------------+-----------------+------------+------------------+--------+
-            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
-Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
-------------+-----------------+------------+-----------------+------------+------------------+--------+
-DATA_OUT<13>|        14.196(R)|      SLOW  |         7.120(R)|      FAST  |clk_BUFGP         |   0.000|
-DATA_OUT<14>|        12.370(R)|      SLOW  |         7.055(R)|      FAST  |clk_BUFGP         |   0.000|
-------------+-----------------+------------+-----------------+------------+------------------+--------+
-
 Clock to Setup on destination clock clk
 ---------------+---------+---------+---------+---------+
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    0.873|         |         |         |
+clk            |    0.918|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Fri May 28 17:53:47 2021 
+Analysis completed Sun Jun 13 18:18:38 2021 
 --------------------------------------------------------------------------------
 
 Trace Settings:
