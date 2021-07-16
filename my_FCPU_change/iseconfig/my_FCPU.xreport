@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2021-06-13T14:48:49</DateModified>
+  <DateModified>2021-07-16T21:04:39</DateModified>
   <ModuleName>my_FCPU</ModuleName>
-  <SummaryTimeStamp>2021-05-23T16:05:18</SummaryTimeStamp>
+  <SummaryTimeStamp>2021-07-12T18:13:50</SummaryTimeStamp>
   <SavedFilePath>D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change/iseconfig/my_FCPU.xreport</SavedFilePath>
   <ImplementationReportsDirectory>D:/0_FPGA_2018/CPU_FPGA/my_FCPU_change\</ImplementationReportsDirectory>
   <DateInitialized>2017-06-22T20:14:20</DateInitialized>

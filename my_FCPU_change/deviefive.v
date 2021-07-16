@@ -33,7 +33,7 @@ output CLKCPU;
 
 reg [25:0]cnt = 26'd1;
 
-assign CLKCPU = !cnt[25]; // 25
+assign CLKCPU = !cnt[25]; // 9
 assign CLK1kHz = !cnt[14];
 assign CLK100Hz = cnt[17];
 

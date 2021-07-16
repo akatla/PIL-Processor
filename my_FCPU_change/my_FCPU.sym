@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="my_FCPU">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2021-6-13T7:50:55</timestamp>
+    <timestamp>2021-7-16T14:19:29</timestamp>
     <attr value="my_FCPU" name="VeriModel" />
     <pin polarity="Input" x="0" y="-224" name="clk" />
     <pin polarity="Input" x="0" y="32" name="BUT1" />
