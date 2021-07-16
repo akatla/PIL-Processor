@@ -67,7 +67,7 @@ namespace WindowsFormsApplication1
 
             toolStripStatusLabel2.Text = "0 позиций.";
 
-            // label2.Text = fpgaBRAM;
+            button2.Enabled = false;
 
             fff.ReadCommandFile(pptt);
 
@@ -124,13 +124,14 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
-                    foreach (string s in gr.CompileToBRAM(gr.CompileBeforeToBRAM(textBox2.Text, new ArrayList(listBox1.Items))))
+                    foreach (string s in gr.CompileToBRAM(gr.CompileBeforeToBRAM(textBox2.Text, new ArrayList(listBox1.Items),checkBox1.Checked)))
                     {
-                        listBox2.Items.Add(s + " " + s.Split('_').Length.ToString());
+                        listBox2.Items.Add(s + " " + (s.Split('_').Length - 1).ToString());
                         ar.Add(s);
                     }
 
-                    toolStripStatusLabel2.Text = "Команд " + listBox2.Items.Count.ToString();
+                    // toolStripStatusLabel2.Text = "Команд " + listBox2.Items.Count.ToString();
+                    toolStripStatusLabel3.Text = gr.GetBRAMcount.ToString() + "строк(а)(и) для загрузки в BRAM готово!";
                 }
                 
                 fff.WriteCommandFile(pptttw,ar);
@@ -167,11 +168,17 @@ namespace WindowsFormsApplication1
             textBox2.Text = string.Empty;
             toolStripStatusLabel2.Text = string.Empty;
             clickOrWrite = false;
+            button2.Enabled = false;
+            checkBox1.Checked = false;
+            gr.SetHeadZ = 0;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             textBox2.Text = gr.LinkerOo(textBox2.Text);
+            toolStripStatusLabel3.Text = "ASM " + gr.GetAsmCount.ToString() + " strings linked!";
+
+            button2.Enabled = true;
         }
     }
 }

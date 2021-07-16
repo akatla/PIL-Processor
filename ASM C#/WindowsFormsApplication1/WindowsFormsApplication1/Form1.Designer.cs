@@ -138,8 +138,12 @@ namespace WindowsFormsApplication1
     public class Generator
     {
         private ArrayList arr = null;
-        string BRAMhead = ".INITP_00(256'h";
-        
+        string BRAMhead = ".INITP_";
+        string BRAMheadTwo = "(256'h";        
+        int BRAMhead_num_string = 0;
+        int nStr = 0;
+        int bRAMCount = 0;
+
         string[] mantra = {   
                               "0000~0", 
                               "0001~1", 
@@ -252,7 +256,7 @@ namespace WindowsFormsApplication1
             string [] hexPIL = srcbram.Split('_');
             ArrayList outPILBRAMData = new ArrayList();
 
-            int b = 0;
+            // int b = 0;
 
             if (srcbram.Length > 0)
             {
@@ -271,45 +275,54 @@ namespace WindowsFormsApplication1
                                 bramOut = "_" + hexPIL[g].ToString() + bramOut;
                             }
                         }
-
-                       
                     }
                     else
                     {
-
                         for (int y = 0; y <= i; y++)
                         {
-                            bramOut = "_" + hexPIL[y].ToString() + bramOut;
+                            bramOut = bramOut + "_" + hexPIL[y].ToString();
+                        }
+
+                        for (int j = i; j < 31; j++)
+                        {
+                            bramOut = "_00" + bramOut;
                         }
 
                         bramOut = bramOut.Remove(0, 1);
 
-                        for (int j = i; j < 31; j++)
-                        {
-                            bramOut = bramOut + "_00";
-                        }                        
                     }
 
+                    if (BRAMhead_num_string <= 9)
+                    {
+                        bramOut = BRAMhead + "0" + BRAMhead_num_string.ToString() + BRAMheadTwo + bramOut;
+                    }
+                    else
+                    {
+                        bramOut = BRAMhead + BRAMhead_num_string.ToString() + BRAMheadTwo + bramOut;
+                    }
 
-
-                    bramOut = BRAMhead + bramOut;
                     bramOut = bramOut + "),";
+
                     outPILBRAMData.Add(bramOut);
+                    
                     bramOut = string.Empty;
+                    BRAMhead_num_string++;
                 }
             }
-            
+
+            bRAMCount = outPILBRAMData.Count;
+ 
             return outPILBRAMData;
         }
 
 
-        public string CompileBeforeToBRAM(string incomp, ArrayList arrCommands)
+        public string CompileBeforeToBRAM(string incomp, ArrayList arrCommands, bool zerofovd)
         {
             char[] delimiterChars = { '\r', '\n' };
             string[] binaryStr = null;
             ArrayList binArr = null;
             string rez = string.Empty;
-            
+
             binaryStr = incomp.Split(delimiterChars);
 
             if (binaryStr.Length > 0)
@@ -364,9 +377,17 @@ namespace WindowsFormsApplication1
                 }
             }
 
-            rez = rez.Remove(0, 1);
+            if (rez != string.Empty)
+            {
+                rez = rez.Remove(0, 1);
+            }
 
-            return rez + "_00";
+            if (BRAMhead_num_string == 0 && zerofovd)
+            {
+                rez = rez + "_00";
+            }
+
+            return rez;
         }
 
         public int GetnuMofStep
@@ -377,10 +398,26 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public int GetBRAMcount
+        {
+            get
+            {
+                return bRAMCount;
+            }
+        }
+
+        public int SetHeadZ
+        {
+            set
+            {
+                BRAMhead_num_string = value;
+            }
+        }
+
         public string LinkerOo(string tBox2)
         {
             string xxx = string.Empty;
-            int nStr = 0;
+            
             char[] delimiterChars = { '\r', '\n' };
 
             string[] asmTxtx = tBox2.Split(delimiterChars);
@@ -410,6 +447,14 @@ namespace WindowsFormsApplication1
             }
 
             return xxx;
+        }
+
+        public int GetAsmCount
+        {
+            get
+            {
+                return nStr;
+            }
         }
 
         #endregion
@@ -463,9 +508,11 @@ namespace WindowsFormsApplication1
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -532,7 +579,8 @@ namespace WindowsFormsApplication1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3});
             this.statusStrip1.Location = new System.Drawing.Point(0, 519);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(983, 22);
@@ -550,6 +598,12 @@ namespace WindowsFormsApplication1
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel3.Text = "toolStripStatusLabel3";
             // 
             // button3
             // 
@@ -581,11 +635,22 @@ namespace WindowsFormsApplication1
             this.listBox2.Size = new System.Drawing.Size(955, 112);
             this.listBox2.TabIndex = 10;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(829, 231);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(99, 17);
+            this.checkBox1.TabIndex = 11;
+            this.checkBox1.Text = "NOP ведущий.";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(983, 541);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -620,6 +685,8 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
