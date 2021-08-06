@@ -18,27 +18,27 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int zz = 0;
+            //int zz = 0;
 
-            foreach(string s in gr.GeneratorBinaryPIL())
-            {
-                if (zz.ToString().Length == 1)
-                {
-                    listBox1.Items.Add("  " + zz.ToString() + " -> " + s);
-                }
+            //foreach(string s in gr.GeneratorBinaryPIL())
+            //{
+            //    if (zz.ToString().Length == 1)
+            //    {
+            //        listBox1.Items.Add("  " + zz.ToString() + " -> " + s);
+            //    }
                 
-                if (zz.ToString().Length == 2)
-                {
-                    listBox1.Items.Add(" " + zz.ToString() + " -> " + s);
-                }
+            //    if (zz.ToString().Length == 2)
+            //    {
+            //        listBox1.Items.Add(" " + zz.ToString() + " -> " + s);
+            //    }
 
-                if (zz.ToString().Length == 3)
-                {
-                    listBox1.Items.Add(zz.ToString() + " -> " + s);
-                }
+            //    if (zz.ToString().Length == 3)
+            //    {
+            //        listBox1.Items.Add(zz.ToString() + " -> " + s);
+            //    }
 
-                zz++;
-            }
+            //    zz++;
+            //}
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace WindowsFormsApplication1
             int x = 0;
             int comm = 0;
 
-            toolStripStatusLabel2.Text = "0 позиций.";
+            toolStripStatusLabel2.Text = string.Empty;
 
             button2.Enabled = false;
 
@@ -92,7 +92,7 @@ namespace WindowsFormsApplication1
 
                     if (listBox1.Items.Count > 0)
                     {
-                        toolStripStatusLabel1.Text = x.ToString() + " записей. " + comm.ToString() + " команд. Свободных " + (x - comm).ToString() + " позиций.";
+                         toolStripStatusLabel1.Text = x.ToString() + " записей. " + comm.ToString() + " команд. Свободных " + (x - comm).ToString() + " позиций.";
                     }
                 }
                 else
@@ -104,12 +104,21 @@ namespace WindowsFormsApplication1
             {
                 toolStripStatusLabel1.Text = "Файл списка команд отстствует!";
             }
+
+            button1.Enabled = Properties.Settings.Default.GenButton;
+            toolStripStatusLabel3.Text = string.Empty;
+
+            this.Text = "Assembler PIL " + DateTime.Now.Year;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ArrayList ar = new ArrayList();
+            ar = new ArrayList();
             
+            gr.SetHeadZ = 0;
+
+            listBox2.Items.Clear();
+
             if (textBox2.Text == string.Empty)
             {
                 toolStripStatusLabel2.Text = " Исходный код не найден!";
@@ -137,6 +146,9 @@ namespace WindowsFormsApplication1
                 fff.WriteCommandFile(pptttw,ar);
                 // toolStripStatusLabel2.Text = "Позиций "+ label2.Text.Split('_').Length.ToString();
             }
+
+            BRAMbtn.Enabled = true;
+            upLoadToBRAMToolStripMenuItem.Enabled = true;
         }
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
@@ -163,22 +175,85 @@ namespace WindowsFormsApplication1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            listBox2.Items.Clear();
-            fpgaBRAM = string.Empty;
-            textBox2.Text = string.Empty;
-            toolStripStatusLabel2.Text = string.Empty;
-            clickOrWrite = false;
-            button2.Enabled = false;
-            checkBox1.Checked = false;
-            gr.SetHeadZ = 0;
+            if (textBox2.Text != string.Empty)
+            {
+                listBox2.Items.Clear();
+                fpgaBRAM = string.Empty;
+                textBox2.Text = string.Empty;
+                toolStripStatusLabel2.Text = string.Empty;
+                clickOrWrite = false;
+                button2.Enabled = false;
+                checkBox1.Checked = false;
+                gr.nStrZero = 0;
+                gr.SetHeadZ = 0;
+                gr.SetLblCount = 0;
+                toolStripStatusLabel3.Text = string.Empty;
+                linkToolStripMenuItem.Enabled = false;
+                compileToolStripMenuItem.Enabled = false;
+                upLoadToBRAMToolStripMenuItem.Enabled = false;
+                BRAMbtn.Enabled = false;
+            }
+            else
+            {
+                toolStripStatusLabel3.Text = "Нет данных.";
+            }
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            textBox2.Text = gr.LinkerOo(textBox2.Text);
-            toolStripStatusLabel3.Text = "ASM " + gr.GetAsmCount.ToString() + " strings linked!";
+            if (textBox2.Text != string.Empty)
+            {
+                gr.SetLblCount = 0;
+                textBox2.Text = gr.LinkerLabel(gr.LinkerOo(textBox2.Text), checkBox1.Checked);
+                toolStripStatusLabel3.Text = "ASM " + gr.GetAsmCount.ToString() + " strings linked!";
 
-            button2.Enabled = true;
+                button2.Enabled = true;
+                compileToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                toolStripStatusLabel3.Text = "Нет данных.";
+            }
+        }
+
+        private void BRAMbtn_Click(object sender, EventArgs e)
+        {
+           fff.UpLoadToBiram(Properties.Settings.Default.PathBRAM + Properties.Settings.Default.BRAMname, ar);
+           BRAMbtn.Enabled = false;
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button3_Click(sender, e);
+        }
+
+        private void linkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button4_Click(sender, e);
+        }
+
+        private void compileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button2_Click(sender, e);
+        }
+
+        private void upLoadToBRAMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BRAMbtn_Click(sender, e);
+            upLoadToBRAMToolStripMenuItem.Enabled = false;
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void aboutToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form2 fAbout = new Form2();
+
+            fAbout.ShowDialog();
         }
     }
 }

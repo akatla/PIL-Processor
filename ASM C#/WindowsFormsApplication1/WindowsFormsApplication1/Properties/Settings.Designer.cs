@@ -37,13 +37,49 @@ namespace WindowsFormsApplication1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\\SUGONAYEV_Infa\\000_START_2021\\000000_PIL\\outbram.o")]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\SUGONAYEV_Infa\\000_START_2021\\000000_PIL\\outbram.o")]
         public string pptttw {
             get {
                 return ((string)(this["pptttw"]));
             }
             set {
                 this["pptttw"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool GenButton {
+            get {
+                return ((bool)(this["GenButton"]));
+            }
+            set {
+                this["GenButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\0_FPGA_2018\\CPU_FPGA\\my_FCPU_change\\")]
+        public string PathBRAM {
+            get {
+                return ((string)(this["PathBRAM"]));
+            }
+            set {
+                this["PathBRAM"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("BRAMBlock.v")]
+        public string BRAMname {
+            get {
+                return ((string)(this["BRAMname"]));
+            }
+            set {
+                this["BRAMname"] = value;
             }
         }
     }

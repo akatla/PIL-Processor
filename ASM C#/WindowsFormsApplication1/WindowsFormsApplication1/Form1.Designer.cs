@@ -4,9 +4,15 @@ using System;
 
 namespace WindowsFormsApplication1
 {
+    #region FileWorker
+    /// <summary>
+    /// Class Files.
+    /// </summary>
     public class FlReaderPIL
     {
         ArrayList dataCommands = new ArrayList();
+        ArrayList arrBRAM = new ArrayList();
+        
         StreamReader fdsr = null;
         StreamWriter fdsw = null;
         string cs = string.Empty;
@@ -26,6 +32,99 @@ namespace WindowsFormsApplication1
             }
 
             return rz;
+        }
+
+        private void BRAMReader(string pathBR)
+        {
+            try
+            {
+                fdsr = new StreamReader(pathBR);
+
+                while ((cs = fdsr.ReadLine()) != null)
+                {
+                    arrBRAM.Add(cs);
+                }
+            }
+            catch (Exception fex)
+            {
+                System.Diagnostics.Debug.WriteLine(fex.Message);
+            }
+            finally
+            {
+                if (fdsr != null)
+                {
+                    fdsr.Close();
+                }
+            }            
+        }
+
+        private void BRAMChange(ArrayList bram, string pathBR)
+        {
+            try
+            {
+                fdsw = new StreamWriter(pathBR);
+
+                foreach (string s in bram)
+                {
+                    fdsw.WriteLine(s);
+                }
+            }
+            catch (Exception fer)
+            {
+                System.Diagnostics.Debug.WriteLine(fer.Message);
+            }
+            finally
+            {
+                if (fdsw != null)
+                {
+                    fdsw.Flush();
+                    fdsw.Close();
+                }
+            }            
+        }
+
+        /// <summary>
+        /// Done! 06/08/2021 03:24
+        /// </summary>
+        /// <param name="arrIn"></param>
+        /// <param name="bramSw"></param>
+        /// <returns></returns>
+        private ArrayList BRAMSwitchRecords(ArrayList arrIn, ArrayList bramSw)
+        {
+            ArrayList rez = new ArrayList();
+            bool zed = false;
+
+            foreach (string brs in arrIn)
+            {
+                foreach (string bb in bramSw)
+                {
+                    if (brs.Contains(".INIT_") && bb.Substring(bb.IndexOf(".INIT_"), 8) == brs.Substring(brs.IndexOf(".INIT_"), 8))
+                    {
+                        rez.Add(bb);
+                        zed = true;
+                        break;
+                    }
+                }
+
+                if (zed)
+                {
+                    zed = false;
+                    continue;
+                }
+                else
+                {
+                    rez.Add(brs);
+                }
+                  
+            }
+
+            return rez;
+        }
+
+        public void UpLoadToBiram(string pt, ArrayList stobram)
+        {
+            BRAMReader(pt);
+            BRAMChange(BRAMSwitchRecords(arrBRAM, stobram), pt);
         }
 
         public void ReadCommandFile(string path)
@@ -134,11 +233,13 @@ namespace WindowsFormsApplication1
             dataCommands.AddRange(r);
         }
     }
+    #endregion
 
+    #region MainGenerator
     public class Generator
     {
         private ArrayList arr = null;
-        string BRAMhead = ".INITP_";
+        string BRAMhead = ".INIT_";
         string BRAMheadTwo = "(256'h";        
         int BRAMhead_num_string = 0;
         int nStr = 0;
@@ -164,6 +265,7 @@ namespace WindowsFormsApplication1
                           };
 
         int nuMofStep = 0;
+        int adrrLblCounter = 0;
 
         public Generator()
         {
@@ -255,6 +357,7 @@ namespace WindowsFormsApplication1
             string bramOut = string.Empty;
             string [] hexPIL = srcbram.Split('_');
             ArrayList outPILBRAMData = new ArrayList();
+            
 
             // int b = 0;
 
@@ -315,15 +418,22 @@ namespace WindowsFormsApplication1
             return outPILBRAMData;
         }
 
-
+        /// <summary>
+        /// Main Function of Compilator to BRAM Xilinx.
+        /// </summary>
+        /// <param name="incomp"></param>
+        /// <param name="arrCommands"></param>
+        /// <param name="zerofovd"></param>
+        /// <returns></returns>
         public string CompileBeforeToBRAM(string incomp, ArrayList arrCommands, bool zerofovd)
-        {
-            char[] delimiterChars = { '\r', '\n' };
+        {            
+            string[] separatingStrings = { "\r\n" };
             string[] binaryStr = null;
             ArrayList binArr = null;
             string rez = string.Empty;
+            string tH = string.Empty;
 
-            binaryStr = incomp.Split(delimiterChars);
+            binaryStr = incomp.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
 
             if (binaryStr.Length > 0)
             {
@@ -339,39 +449,50 @@ namespace WindowsFormsApplication1
             }
 
             foreach (string b in binArr)
-            {
-                foreach (string d in arrCommands)
+            {   
+                if (b[0] != ':')
                 {
-                    if (d.Split('~').Length == 2)
+                    foreach (string d in arrCommands)
                     {
-                        // Command MOV,ADD,SUB,SHR,SHL one byte. After push Compile Button!
-                        if (b.Length > 3 && (b.Split(' ')[1] + " " + b.Split(' ')[2]) == d.Split('~')[1])
+                        tH = d;
+
+                        if (d.Contains("LD") || d.Contains("ST"))
                         {
-                            rez = "_" + BinToHex(d.Split('~')[0]) + rez;
-                            nuMofStep++;
+                            tH = d.Replace("[RA](", string.Empty);
+                            tH = tH.Replace(")", string.Empty); ;
                         }
 
-                        // Command JUMP. After push Compile Button!
-                        if (b.Length > 3 && (b.Split(' ')[1] + " #ADDRA") == d.Split('~')[1])
+                        if (tH.Split('~').Length == 2)
                         {
-                            if (b.Split('#')[1].Length == 1)
+                            // Command MOV,ADD,SUB,SHR,SHL one byte. After push Compile Button!
+                            if ((b.Split(' ')[1] + " " + b.Split(' ')[2]) == tH.Split('~')[1]) // b.Length > 3 && 
                             {
-                                rez = "_" + b.Split('#')[1] + "0_" + BinToHex(d.Split('~')[0]) + "_00" + rez;
-                            }
-                            else
-                            {
-                                rez = "_" + b.Split('#')[1] + "_" + BinToHex(d.Split('~')[0]) + "_00" + rez;
+                                rez = "_" + BinToHex(d.Split('~')[0]) + rez;
+                                nuMofStep++;
                             }
 
-                            nuMofStep++;
-                        }
+                            // Command JUMP. After push Compile Button! Renew !!!
+                            if ((b.Split(' ')[1] + " #ADDRA") == tH.Split('~')[1]) // b.Length > 3 && 
+                            {
+                                if (zerofovd)
+                                {
+                                    rez = "_" + b.Split(':')[1] + "_" + BinToHex(tH.Split('~')[0]) + "_00" + rez;
+                                }
+                                else
+                                {
+                                    rez = "_" + b.Split(':')[1] + "_" + BinToHex(tH.Split('~')[0]) + rez;
+                                }
 
-                        // MOV two bytes.
-                        if (b.Length > 3 && (b.Contains("MOV") && b.Contains("#")) && 
-                                        (b.Split(' ')[1] + " " + b.Split(' ')[2].Split(',')[0] 
-                                                                        + ",#MEM" == d.Split('~')[1]))
-                        {
-                            rez = "_" + b.Split('#')[1] + "_" + BinToHex(d.Split('~')[0]) + rez;
+                                nuMofStep++;
+                            }
+
+                            // MOV two bytes.
+                            if ((b.Contains("MOV") && b.Contains("#")) &&
+                                            (b.Split(' ')[1] + " " + b.Split(' ')[2].Split(',')[0]
+                                                                            + ",#MEM" == tH.Split('~')[1])) // b.Length > 3 && 
+                            {
+                                rez = "_" + b.Split('#')[1] + "_" + BinToHex(tH.Split('~')[0]) + rez;
+                            }
                         }
                     }
                 }
@@ -382,12 +503,135 @@ namespace WindowsFormsApplication1
                 rez = rez.Remove(0, 1);
             }
 
-            if (BRAMhead_num_string == 0 && zerofovd)
+            return rez;
+        }
+
+        public string LinkerOo(string tBox2)
+        {
+            string xxx = string.Empty;
+            
+            char[] delimiterChars = { '\r', '\n' };
+
+            foreach (string d in tBox2.Split(delimiterChars))
             {
-                rez = rez + "_00";
+                if (d != string.Empty && d.Substring(0, 1) != ":")
+                {
+                    if (Convert.ToString(nStr, 16).ToUpper().Length == 1)
+                    {
+                        xxx += "0" + Convert.ToString(nStr, 16).ToUpper() + " " + d + "\r\n";
+                    }
+                    else
+                    {
+                        xxx += Convert.ToString(nStr, 16).ToUpper() + " " + d + "\r\n";
+                    }
+
+                    // After all!
+                    nStr++;
+                }
+                else
+                {
+                    if (d.Length > 0)
+                    {
+                        xxx += d + "\r\n";
+                    }
+                }
             }
 
-            return rez;
+            return xxx;
+        }
+
+        /// <summary>
+        /// Set label to their addresses.
+        /// </summary>
+        /// <param name="lbl"></param>
+        /// <param name="chZr"></param>
+        /// <returns></returns>
+        public string LinkerLabel(string lbl, bool chZr)
+        {
+            string lblout = string.Empty;
+
+            ArrayList lblArr = new ArrayList();
+
+            ArrayList noEmptArr = new ArrayList();
+
+            char[] delimiterChars = { '\r', '\n' };
+
+            foreach (string t in lbl.Split(delimiterChars))
+            {
+                if (t != string.Empty)
+                {
+                    noEmptArr.Add(t);
+                }
+            }
+
+            foreach (string ff in noEmptArr)
+            {
+                // MOV RX,#XX
+                if (ff.Contains(",#"))
+                {
+                    adrrLblCounter += 2;
+                }
+
+                // JM? :XX
+                if (ff.Contains(" :"))
+                {
+                    if (chZr)
+                    {
+                        adrrLblCounter += 3;
+                    }
+                    else
+                    {
+                        adrrLblCounter += 2;
+                    }
+                }
+
+                // MOV RX,RY
+                if ((!ff.Contains(",#") && ff.Contains("MOV")) || 
+                        ff.Contains("INC") || ff.Contains("SH") || 
+                            ff.Contains("LD") || ff.Contains("ST") ||
+                                ff.Contains("ADD") || ff.Contains("SUB"))
+                {
+                    adrrLblCounter++;
+                }
+
+                if (ff[0] == ':')
+                {
+                    if (Convert.ToString(adrrLblCounter, 16).Length <= 1)
+                    {
+                        lblArr.Add(ff + "~" + "0" + Convert.ToString(adrrLblCounter, 16).ToUpper());
+                    }
+                    else
+                    {
+                        lblArr.Add(ff + "~" + Convert.ToString(adrrLblCounter, 16).ToUpper());
+                    }
+                }          
+            }           
+
+            foreach (string bibi in noEmptArr)
+            {
+                if (bibi[0] == ':')
+                {
+                    lblout += bibi + "\r\n";
+                }
+
+                if (bibi.Contains(",") || bibi.Contains("INC") || bibi.Contains("SH"))
+                {
+                    lblout += bibi + "\r\n";
+                }
+
+                if (bibi.Contains(" :"))
+                {
+                    foreach (string s in lblArr)
+                    {
+                        if (bibi.Split(' ')[2] == s.Split('~')[0])
+                        {
+                            lblout += bibi.Replace(bibi.Split(' ')[2], ":" + s.Split('~')[1]) + "\r\n";
+                        }
+                    }
+                }
+            }
+
+            return lblout;
         }
 
         public int GetnuMofStep
@@ -414,39 +658,12 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public string LinkerOo(string tBox2)
+        public int SetLblCount
         {
-            string xxx = string.Empty;
-            
-            char[] delimiterChars = { '\r', '\n' };
-
-            string[] asmTxtx = tBox2.Split(delimiterChars);
-
-            foreach (string d in tBox2.Split(delimiterChars))
+            set
             {
-                if (d.Length > 0 && d.Substring(0, 1) != "#" && d != string.Empty)
-                {
-                    nStr++;
-
-                    if (Convert.ToString(nStr, 16).ToUpper().Length == 1)
-                    {
-                        xxx += "0" + Convert.ToString(nStr, 16).ToUpper() + " " + d + "\r\n";
-                    }
-                    else
-                    {
-                        xxx += Convert.ToString(nStr, 16).ToUpper() + " " + d + "\r\n";
-                    }
-                }
-                else
-                {
-                    if (d.Length > 0)
-                    {
-                        xxx += d + "\r\n";
-                    }
-                }
+                adrrLblCounter = value;
             }
-
-            return xxx;
         }
 
         public int GetAsmCount
@@ -457,10 +674,20 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public int nStrZero
+        {
+            set 
+            {
+                nStr = value;
+            }
+        }
+
         #endregion
 
     }
-    
+    #endregion
+
+    #region FormStuff
     partial class Form1
     {
         string pptt = Properties.Settings.Default.pptt;
@@ -471,6 +698,7 @@ namespace WindowsFormsApplication1
         bool clickOrWrite = false;
         string fpgaBRAM = "_00";
         int numStrDB = 1;
+        ArrayList ar = null;
         
 
         /// <summary>
@@ -513,12 +741,25 @@ namespace WindowsFormsApplication1
             this.button4 = new System.Windows.Forms.Button();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.BRAMbtn = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.linkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.upLoadToBRAMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(829, 42);
+            this.button1.Location = new System.Drawing.Point(829, 80);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 23);
             this.button1.TabIndex = 0;
@@ -531,7 +772,7 @@ namespace WindowsFormsApplication1
             this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 18;
-            this.listBox1.Location = new System.Drawing.Point(16, 12);
+            this.listBox1.Location = new System.Drawing.Point(16, 50);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(296, 364);
             this.listBox1.TabIndex = 1;
@@ -541,14 +782,14 @@ namespace WindowsFormsApplication1
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(332, 12);
+            this.textBox1.Location = new System.Drawing.Point(332, 50);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(639, 24);
             this.textBox1.TabIndex = 2;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(829, 341);
+            this.button2.Location = new System.Drawing.Point(829, 379);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(142, 23);
             this.button2.TabIndex = 3;
@@ -560,7 +801,7 @@ namespace WindowsFormsApplication1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(329, 52);
+            this.label1.Location = new System.Drawing.Point(329, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 4;
@@ -569,10 +810,10 @@ namespace WindowsFormsApplication1
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(332, 95);
+            this.textBox2.Location = new System.Drawing.Point(332, 146);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(270, 281);
+            this.textBox2.Size = new System.Drawing.Size(270, 268);
             this.textBox2.TabIndex = 6;
             // 
             // statusStrip1
@@ -581,7 +822,7 @@ namespace WindowsFormsApplication1
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 519);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 537);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(983, 22);
             this.statusStrip1.TabIndex = 7;
@@ -607,7 +848,7 @@ namespace WindowsFormsApplication1
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(829, 284);
+            this.button3.Location = new System.Drawing.Point(829, 322);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(142, 23);
             this.button3.TabIndex = 8;
@@ -617,7 +858,7 @@ namespace WindowsFormsApplication1
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(829, 313);
+            this.button4.Location = new System.Drawing.Point(829, 351);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(142, 23);
             this.button4.TabIndex = 9;
@@ -630,7 +871,7 @@ namespace WindowsFormsApplication1
             this.listBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 18;
-            this.listBox2.Location = new System.Drawing.Point(16, 382);
+            this.listBox2.Location = new System.Drawing.Point(16, 420);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(955, 112);
             this.listBox2.TabIndex = 10;
@@ -638,34 +879,148 @@ namespace WindowsFormsApplication1
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(829, 231);
+            this.checkBox1.Location = new System.Drawing.Point(829, 269);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(99, 17);
             this.checkBox1.TabIndex = 11;
             this.checkBox1.Text = "NOP ведущий.";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // BRAMbtn
+            // 
+            this.BRAMbtn.Enabled = false;
+            this.BRAMbtn.Location = new System.Drawing.Point(829, 229);
+            this.BRAMbtn.Name = "BRAMbtn";
+            this.BRAMbtn.Size = new System.Drawing.Size(142, 23);
+            this.BRAMbtn.TabIndex = 12;
+            this.BRAMbtn.Text = "UpLoad BRAM";
+            this.BRAMbtn.UseVisualStyleBackColor = true;
+            this.BRAMbtn.Click += new System.EventHandler(this.BRAMbtn_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.aboutToolStripMenuItem1});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(983, 24);
+            this.menuStrip1.TabIndex = 13;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem,
+            this.linkToolStripMenuItem,
+            this.compileToolStripMenuItem,
+            this.upLoadToBRAMToolStripMenuItem,
+            this.closeToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.aboutToolStripMenuItem.Text = "Clear";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // linkToolStripMenuItem
+            // 
+            this.linkToolStripMenuItem.Name = "linkToolStripMenuItem";
+            this.linkToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.linkToolStripMenuItem.Text = "Link";
+            this.linkToolStripMenuItem.Click += new System.EventHandler(this.linkToolStripMenuItem_Click);
+            // 
+            // compileToolStripMenuItem
+            // 
+            this.compileToolStripMenuItem.Enabled = false;
+            this.compileToolStripMenuItem.Name = "compileToolStripMenuItem";
+            this.compileToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.compileToolStripMenuItem.Text = "Compile";
+            this.compileToolStripMenuItem.Click += new System.EventHandler(this.compileToolStripMenuItem_Click);
+            // 
+            // upLoadToBRAMToolStripMenuItem
+            // 
+            this.upLoadToBRAMToolStripMenuItem.Enabled = false;
+            this.upLoadToBRAMToolStripMenuItem.Name = "upLoadToBRAMToolStripMenuItem";
+            this.upLoadToBRAMToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.upLoadToBRAMToolStripMenuItem.Text = "Up load to BRAM";
+            this.upLoadToBRAMToolStripMenuItem.Click += new System.EventHandler(this.upLoadToBRAMToolStripMenuItem_Click);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(332, 127);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Asm editor PIL:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Command list";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem2});
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
+            this.aboutToolStripMenuItem1.Text = "Help";
+            // 
+            // aboutToolStripMenuItem2
+            // 
+            this.aboutToolStripMenuItem2.Name = "aboutToolStripMenuItem2";
+            this.aboutToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem2.Text = "About";
+            this.aboutToolStripMenuItem2.Click += new System.EventHandler(this.aboutToolStripMenuItem2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(983, 541);
+            this.ClientSize = new System.Drawing.Size(983, 559);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.BRAMbtn);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "MY NEW PIL";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Assembler PIL";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -687,6 +1042,18 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button BRAMbtn;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem linkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem upLoadToBRAMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem2;
     }
 }
-
+    #endregion

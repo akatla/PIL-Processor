@@ -6,7 +6,16 @@
       <Value Profile="(Default)">D:\SUGONAYEV_Infa\000_START_2021\000000_PIL\Commands1.txt</Value>
     </Setting>
     <Setting Name="pptttw" Type="System.String" Scope="User">
-      <Value Profile="(Default)">\SUGONAYEV_Infa\000_START_2021\000000_PIL\outbram.o</Value>
+      <Value Profile="(Default)">D:\SUGONAYEV_Infa\000_START_2021\000000_PIL\outbram.o</Value>
+    </Setting>
+    <Setting Name="GenButton" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PathBRAM" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\0_FPGA_2018\CPU_FPGA\my_FCPU_change\</Value>
+    </Setting>
+    <Setting Name="BRAMname" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BRAMBlock.v</Value>
     </Setting>
   </Settings>
 </SettingsFile>
